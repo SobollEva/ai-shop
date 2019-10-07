@@ -1,0 +1,89 @@
+stages:
+  - build
+  - deploy
+
+
+variables:
+  INSTANCE_NAME: $CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG
+
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+
+
+build:
+  stage: build
+  tags:
+    - dind_aibackup
+  script:
+    - apk add --update nodejs nodejs-npm
+    - npm install npm@latest -g
+    - npm install
+    - ./node_modules/.bin/ng build --source-map --output-path ./docker/nginx/dist
+    - docker-compose build
+    - docker-compose push
+  only:
+    - master
+
+
+build_staging:
+  stage: build
+  tags:
+    - dind_aibackup
+  script:
+    - apk add --update nodejs nodejs-npm
+    - npm install
+    - npm run build -- --configuration=staging --source-map --output-path ./docker/nginx/dist
+    - docker-compose build
+    - docker-compose push
+  only:
+    - branches
+  except:
+    - master
+
+
+deploy_staging:
+  stage: deploy
+  tags:
+    - dind_aibackup
+  script:
+    - docker stack deploy --with-registry-auth --compose-file=docker-compose.yml ${INSTANCE_NAME}
+  environment:
+    name: staging/$CI_COMMIT_REF_NAME
+    url: https://$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG.aitarget.com
+    on_stop: stop_staging
+  only:
+    - branches
+  except:
+    - master
+
+
+stop_staging:
+  stage: deploy
+  tags:
+    - dind_aibackup
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - docker stack rm ${INSTANCE_NAME}
+  when: manual
+  environment:
+    name: staging/$CI_COMMIT_REF_NAME
+    action: stop
+  only:
+    - branches
+  except:
+    - master
+
+
+deploy_prod:
+  stage: deploy
+  tags:
+    - dind_aibackup
+  script:
+    - docker stack deploy --with-registry-auth --compose-file=docker-compose.yml ${CI_PROJECT_NAME}
+  environment:
+    name: production
+    url: https://$CI_PROJECT_NAME.aitarget.com
+  only:
+   - master

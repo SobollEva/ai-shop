@@ -1,0 +1,117 @@
+<div class="preview"
+     [style.width.px]="40*draftWidth"
+     [style.height.px]="40*draftHeight">
+  <div class="content">
+    <div class="content_background img-position-center"
+         [ngStyle]="{'background-image': 'url('+customizeService.previewSlide.image+')'}">
+    </div>
+    <div class="content__top_bg"
+         [ngStyle]="{'background-color': setupView.color_title_background | color}"></div>
+    <div class="content__top_title">
+      <div class="content__top_title-title">
+        <textarea [value]="customizeService.previewSlide?.title"
+                  [ngStyle]="{'color': setupView.color_title | color}"
+                  (input)="customizeService.previewSlide.title = $event.target.value"
+                  [appFontSize]="customizeService.previewSlide.title" [limitSizeList]="[100,50]"
+                  [fontSizeList]="[15,21]"
+                  [appFontColor]="'color_title'" (currentElement)="customizeService.propertyTextColor = $event"
+                  maxlength="100"
+                  pTooltip="Maximum 100 symbols" tooltipPosition="top"
+                  tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                  class="content__top_title-title-input edit-overlay"></textarea>
+      </div>
+      <div class="content__top_title-discount">
+        <input [value]="setupView.discount"
+               [ngStyle]="{'color': setupView.color_discount | color}"
+               (input)="setupView.discount = $event.target.value"
+               [appFontColor]="'color_discount'"
+               (currentElement)="customizeService.propertyTextColor = $event"
+               maxlength="15"
+               pTooltip="Maximum 15 symbols" tooltipPosition="top"
+               tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+               class="content__top_title-discount-input edit-overlay">
+      </div>
+    </div>
+    <div class="content__bottom">
+      <span class="content__bottom__swipe"
+            [ngStyle]="{'color': setupView.color_swipe | color}"
+            [appFontColor]="'color_swipe'" (currentElement)="customizeService.propertyTextColor = $event">^
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="sketch-box slide">
+  <!--SLIDES LIST-->
+  <div class="sketch-box__border-bottom"
+       *ngFor="let product of customizeService.productList; index as i"
+       [ngClass]="{'sketch-box__item-active': i === customizeService.activeSlide}">
+    <div class="sketch-box__item"
+         (click)="addSlideToPreview(i)"
+         [style.width.px]="16*draftWidth"
+         [style.height.px]="16*draftHeight">
+      <div class="content">
+        <div class="content_background img-position-center"
+             [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+        </div>
+        <div class="content__top_bg"
+             [ngStyle]="{'background-color': setupView.color_title_background | color}"></div>
+        <div class="content__top_title">
+          <div class="content__top_title-title"
+               [ngStyle]="{'color': setupView.color_title | color}"
+               [appFontSize]="product?.title" [limitSizeList]="[100,50]" [fontSizeList]="[7,8.5]">
+            {{product?.title}}
+          </div>
+          <div class="content__top_title-discount"
+               [ngStyle]="{'color': setupView.color_discount | color}">
+            {{setupView.discount}}
+          </div>
+        </div>
+        <div class="content__bottom">
+            <span class="content__bottom__swipe"
+                  [ngStyle]="{'color': setupView.color_swipe | color}">^
+            </span>
+        </div>
+      </div>
+      <p class="sketch-box__item_number">{{i+1}}</p>
+    </div>
+  </div>
+  <!--PREVIEW SLIDE-->
+  <div class="sketch-box__border-bottom draft-preview">
+    <div class="sketch-box__item"
+         [style.width.px]="16*draftWidth"
+         [style.height.px]="16*draftHeight">
+      <div class="wrapper-animation-play">
+        <div class="play-animation"
+             (click)="showPreviewDraft()">
+          <span>&#9658;</span>
+        </div>
+      </div>
+      <div class="content">
+        <div class="content_background img-position-center"
+             [ngStyle]="{'background-image': 'url('+customizeService.productList[0]?.image+')'}">
+        </div>
+        <div class="content__top_bg"
+             [ngStyle]="{'background-color': setupView.color_title_background | color}"></div>
+        <div class="content__top_title">
+          <div class="content__top_title-title"
+               [ngStyle]="{'color': setupView.color_title | color}"
+               [appFontSize]="customizeService.productList[0]?.title"
+               [limitSizeList]="[100,50]" [fontSizeList]="[7,8.5]">
+            {{customizeService.productList[0]?.title}}
+          </div>
+          <div class="content__top_title-discount"
+               [ngStyle]="{'color': setupView.color_discount | color}">
+            {{setupView.discount}}
+          </div>
+        </div>
+        <div class="content__bottom">
+              <span class="content__bottom__swipe"
+                    [ngStyle]="{'color': setupView.color_swipe | color}">^
+              </span>
+        </div>
+      </div>
+      <p class="sketch-box__item_number">preview</p>
+    </div>
+  </div>
+</div>

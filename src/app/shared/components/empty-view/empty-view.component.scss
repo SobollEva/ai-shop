@@ -1,0 +1,30 @@
+.empty-draft {
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-draft__sign {
+  width: 110px;
+  height: 110px;
+  border: dashed 6px #d9d9d9;
+  border-radius: 50%;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 70px;
+  line-height: 1.3;
+}
+
+.empty-draft__title {
+  color: #d9d9d9;
+  margin: 15px 0 35px;
+}
+
+::ng-deep p-button.empty-draft__button{
+  .ui-button {
+    width: 225px;
+  }
+}
+

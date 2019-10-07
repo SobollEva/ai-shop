@@ -1,0 +1,274 @@
+<div class="sketch-box animation" [ngClass]="currentFormat">
+  <div class="sketch-box__item"
+       [style.width.px]="16*draftWidth"
+       [style.height.px]="16*draftHeight">
+    <div class="wrapper-animation-play"
+         *ngIf="!isPlay">
+      <div class="play-animation"
+           (click)="showAnimation(true)">
+        <span>&#9658;</span>
+      </div>
+    </div>
+
+    <div class="content poster"
+         [ngStyle]="{'background-color': setupView.params.color_background | color}"
+         *ngIf="isPoster && currentFormat !== 'vertical'">
+      <div class="content__left">
+        <ng-container *ngTemplateOutlet="planes"></ng-container>
+        <ng-container *ngTemplateOutlet="ribbon"></ng-container>
+        <div class="content__product-info">
+          <div class="content__img img-position-center"
+               [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+          </div>
+          <div class="content__title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75]"
+               [fontSizeList]="[4.3*ratio,5.5*ratio]">
+            {{product?.title}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content"
+         [ngStyle]="{'background-color': setupView.params.color_background | color}"
+         *ngIf="!isPoster && isEven && currentFormat !== 'vertical'">
+      <div class="content__left">
+        <div class="plane" [ngClass]="{'plane-left-move': isAnimation && !isHiddenPlane}">
+          <div class="plane__position">
+            <div class="plane__triangle"
+                 [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+            <div class="plane__trapezium"
+                 [ngStyle]="{'background-color': setupView.params.color_end_background | color}">
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{'content-left-move': isAnimation, 'content-left-not-move': isHiddenPlane}"
+             class="content__slide">
+          <div class="content__slide-position">
+            <ng-container *ngTemplateOutlet="planes"></ng-container>
+            <ng-container *ngTemplateOutlet="ribbon"></ng-container>
+            <div class="content__product-info">
+              <div class="content__img img-position-center"
+                   [ngClass]="{'img-move': isAnimation}"
+                   [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+              </div>
+              <div class="content__title"
+                   [ngStyle]="{'color': setupView.params.color_title | color}"
+                   [ngClass]="{'title-move': isAnimation}"
+                   [appFontSize]="product?.title"
+                   [limitSizeList]="[100,75]"
+                   [fontSizeList]="[4.3*ratio,5.5*ratio]">
+                {{product?.title}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content__last__line" *ngIf="isLastSlide"
+             [ngClass]="{'last-slide': isLastSlideAnimation}">
+          <div class="last-slide-top">
+            <div class="content__last__line_bottom"></div>
+            <div class="content__last__line_top"
+                 [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+          </div>
+          <div class="content__last"
+               [ngStyle]="{'background-color': setupView.params.color_end_background | color}"
+               [ngClass]="{'last-slide-open': isLastSlideAnimation}">
+            <div class="content__last__info">
+              <div class="content__last__info_shop-title"
+                   [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color, 'color': setupView.params.color_shop_title | color}"
+                   [ngClass]="{'last-slide-shop-title': isLastSlideAnimation}"
+                   [appFontSize]="setupView.params.shop_title"
+                   [limitSizeList]="[100,40]"
+                   [fontSizeList]="[11.5*ratio,15*ratio]">
+                {{setupView.params.shop_title}}
+              </div>
+              <div class="content__last__info_sale-message"
+                   [ngStyle]="{'color': setupView.params.color_sale_message | color,'font-size':12*ratio +'px'}"
+                   [ngClass]="{'last-slide-shop-message': isLastSlideAnimation}">
+                {{setupView.params.sale_message}}
+              </div>
+            </div>
+          </div>
+          <div class="last-slide-bottom">
+            <div class="content__last__line_top"
+                 [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+            <div class="content__last__line_bottom"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content"
+         [ngStyle]="{'background-color': setupView.params.color_background | color}"
+         *ngIf="!isPoster && !isEven && currentFormat !== 'vertical'">
+      <div class="content__right">
+        <div class="plane" [ngClass]="{'plane-right-move': isAnimation}">
+          <div class="plane__position">
+            <div class="plane__triangle"
+                 [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+            <div class="plane__trapezium"
+                 [ngStyle]="{'background-color': setupView.params.color_end_background | color}">
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{'content-right-move': isAnimation}" class="content__slide">
+          <div class="content__slide-position">
+            <div class="content__product-info">
+              <div class="content__img img-position-center"
+                   [ngClass]="{'img-move': isAnimation}"
+                   [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+              </div>
+              <div class="content__title"
+                   [ngStyle]="{'color': setupView.params.color_title | color}"
+                   [ngClass]="{'title-move': isAnimation}"
+                   [appFontSize]="product?.title"
+                   [limitSizeList]="[100,75]"
+                   [fontSizeList]="[4.3*ratio,5.5*ratio]">
+                {{product?.title}}
+              </div>
+            </div>
+            <ng-container *ngTemplateOutlet="ribbon"></ng-container>
+            <ng-container *ngTemplateOutlet="planes"></ng-container>
+          </div>
+        </div>
+
+      </div>
+      <!--vertical-->
+    </div>
+    <div class="content poster"
+         [ngStyle]="{'background-color': setupView.params.color_background | color}"
+         *ngIf="isPoster && currentFormat === 'vertical'">
+      <div class="content__product-info">
+        <div class="content__img img-position-center"
+             [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+        </div>
+        <div class="content__title"
+             [ngStyle]="{'color': setupView.params.color_title | color}"
+             [appFontSize]="product?.title"
+             [limitSizeList]="[100,75]"
+             [fontSizeList]="[4.3*ratio,5.5*ratio]">
+          {{product?.title}}
+        </div>
+      </div>
+      <div class="content__left">
+        <ng-container *ngTemplateOutlet="planes"></ng-container>
+        <ng-container *ngTemplateOutlet="ribbon"></ng-container>
+      </div>
+    </div>
+    <div class="content"
+         [ngStyle]="{'background-color': setupView.params.color_background | color}"
+         *ngIf="!isPoster && currentFormat === 'vertical'">
+      <div class="content__slide-position">
+        <div class="content__product-info"
+             [ngClass]="{'content-left-move': isAnimation && isEven && !isHiddenPlane, 'content-right-move': isAnimation && !isEven}">
+          <div class="content__img img-position-center"
+               [ngStyle]="{'background-image': 'url('+product?.image+')'}"
+               [ngClass]="{'img-move': isAnimation}">
+          </div>
+          <div class="content__title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [ngClass]="{'title-vertical-move': isAnimation}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75]"
+               [fontSizeList]="[4.3*ratio,5.5*ratio]">
+            {{product?.title}}
+          </div>
+        </div>
+        <div [ngClass]="{'content__left': isEven, 'content__right': !isEven}">
+          <ng-container *ngTemplateOutlet="planes"></ng-container>
+          <ng-container *ngTemplateOutlet="ribbon"></ng-container>
+        </div>
+      </div>
+      <div class="plane" [ngClass]="{'plane-vertical-move': isAnimation && !isHiddenPlane}">
+        <div class="plane__position">
+          <div class="plane__triangle"
+               [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+          <div class="plane__trapezium"
+               [ngStyle]="{'background-color': setupView.params.color_end_background | color}">
+          </div>
+          <div class="plane__triangle"
+               [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+        </div>
+      </div>
+      <div class="content__last__line" *ngIf="isLastSlide && isEven"
+           [ngClass]="{'last-slide-vertical': isLastSlideAnimation}">
+        <div class="last-slide-top">
+          <div class="content__last__line_bottom"></div>
+          <div class="content__last__line_top"
+               [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+        </div>
+        <div class="content__last"
+             [ngStyle]="{'background-color': setupView.params.color_end_background | color}"
+             [ngClass]="{'last-slide-open': isLastSlideAnimation}">
+          <div class="content__last__info">
+            <div class="content__last__info_shop-title"
+                 [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color, 'color': setupView.params.color_shop_title | color}"
+                 [ngClass]="{'last-slide-shop-title': isLastSlideAnimation}"
+                 [appFontSize]="setupView.params.shop_title"
+                 [limitSizeList]="[100,40]"
+                 [fontSizeList]="[11.5*ratio,15*ratio]">
+              {{setupView.params.shop_title}}
+            </div>
+            <div class="content__last__info_sale-message"
+                 [ngStyle]="{'color': setupView.params.color_sale_message | color, 'font-size':12*ratio +'px'}"
+                 [ngClass]="{'last-slide-shop-message': isLastSlideAnimation}">
+              {{setupView.params.sale_message}}
+            </div>
+          </div>
+        </div>
+        <div class="last-slide-bottom">
+          <div class="content__last__line_top"
+               [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+          <div class="content__last__line_bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #ribbon>
+  <div class="content__ribbon">
+    <div class="title-ribbon">
+      <div class="tragon1"
+           [ngStyle]="{'border-top-color': setupView.params.color_flag_l | color,
+                       'border-left-color': setupView.params.color_flag_l | color,
+                       'border-width': 8*ratio +'px ' + 5*ratio +'px'}"
+           [ngClass]="{'ribbon-tragon1-move': isAnimation}"></div>
+      <div class="tragon2"
+           [ngStyle]="{'border-top-color': setupView.params.color_flag_d | color,
+                       'border-right-color': setupView.params.color_flag_d | color,
+                       'border-width': 5*ratio +'px ' + 10*ratio +'px'}"
+           [ngClass]="{'ribbon-tragon2-move': isAnimation}"></div>
+      <div class="title-ribbon-out"
+           [ngStyle]="{'border-top-color': setupView.params.color_flag_l | color,
+           'border-top-width': 21*ratio +'px',
+           'border-left-width': 7*ratio +'px',
+           'border-right-width': 8*ratio +'px'}"
+           [ngClass]="{'ribbon-out-move': isAnimation}">
+      </div>
+      <div class="title-ribbon-in"
+           [ngStyle]="{'color': setupView.params.color_price | color, 'font-size':6*ratio +'px'}"
+           [ngClass]="{'ribbon-in-left-move': isAnimation && isEven, 'ribbon-in-right-move': isAnimation && !isEven}">
+        {{product?.price}}
+      </div>
+      <div class="tragon3"
+           [ngStyle]="{'border-bottom-color': setupView.params.color_flag_d | color,
+           'border-left-color': setupView.params.color_flag_d | color,
+           'border-width': 4*ratio +'px ' + 7*ratio +'px'}"
+           [ngClass]="{'ribbon-tragon3-move': isAnimation}"></div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #planes>
+  <div class="content__triangle"
+       [ngStyle]="{'background-color': setupView.params.color_bottom_plane | color}"></div>
+  <div class="content__trapezium"
+       [ngStyle]="{'background-color': setupView.params.color_end_background | color}">
+    <div class="trapezium__sale-header"
+         [ngStyle]="{'color': setupView.params.color_sale_header | color, 'font-size':18*ratio +'px'}"
+         [ngClass]="{'sale-header-move': isAnimation && currentFormat !== 'vertical',
+         'sale-header-left-vertical-move': isAnimation && isEven && currentFormat === 'vertical',
+         'sale-header-right-vertical-move': isAnimation && !isEven && currentFormat === 'vertical'}">
+      {{setupView.params.sale_header}}
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,80 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<div class="draft-list">
+    <div *ngIf="!isRealoadDraftList; else progressSpinner">
+        <div *ngIf="draftTotalCount || searchTitle; else emptyDraft">
+            <div class="draft-list__header">
+                <div class="search">
+                    <input type="text" pInputText placeholder="Search by title"
+                           (keyup.enter)="searchDraftList($event.target.value)" #search
+                           class="search-input">
+                    <span class="search-icon"
+                          (click)="searchDraftList(search.value)"><i class="pi pi-search"></i></span>
+                </div>
+            </div>
+            <div class="card-list__body">
+                <div *ngFor="let draft of draftList" class="card-list-item card">
+                    <div class="card-list-item__view">
+                        <div *ngIf="draft.template" [ngSwitch]="draft.template.name" class="position-center">
+                            <ng-template ngSwitchCase="sale">
+                                <app-sale [setupView]="draft"></app-sale>
+                            </ng-template>
+                            <ng-template ngSwitchCase="discount">
+                                <app-discount [setupView]="draft"
+                                              [ratio]="draft.template.format === '9x16' ? 0.6 : 0.9"></app-discount>
+                            </ng-template>
+                            <ng-template ngSwitchCase="product">
+                                <app-product [setupView]="draft"
+                                             [ratio]="draft.template.format === '9x16' ? 0.6 : 0.9"></app-product>
+                            </ng-template>
+                            <ng-template ngSwitchCase="goods">
+                                <app-goods [setupView]="draft"
+                                           [ratio]="draft.template.format === '9x16' ? 0.6 : 0.9"></app-goods>
+                            </ng-template>
+                            <ng-template ngSwitchCase="slide">
+                                <app-slide [setupView]="draft" [ratio]="0.6"></app-slide>
+                            </ng-template>
+                            <ng-template ngSwitchCase="front">
+                                <app-front [setupView]="draft" [ratio]="0.6"></app-front>
+                            </ng-template>
+                            <ng-template ngSwitchCase="dance">
+                                <app-dance [setupView]="draft" [ratio]="0.6"></app-dance>
+                            </ng-template>
+                            <ng-template ngSwitchCase="flip">
+                                <app-flip [setupView]="draft" [ratio]="0.6"></app-flip>
+                            </ng-template>
+                        </div>
+                        <div *ngIf="!draft.template && draft.params.size">
+                            <app-custom-draft [draft]="draft"></app-custom-draft>
+                        </div>
+                    </div>
+                    <div class="draft-title">{{draft.title}}</div>
+                    <div class="card-list-item__date">Modified: {{draft.created_at | date:'medium'}}</div>
+                    <div class="buttons">
+                        <button (click)="editDraft(draft)" class="icon icon-edit"
+                                pTooltip="Edit" tooltipPosition="bottom"></button>
+                        <button (click)="duplicateDraft(draft, search)"
+                                class="icon icon-duplicate"
+                                pTooltip="Duplicate" tooltipPosition="bottom"></button>
+                        <button class="icon icon-delete"
+                                (click)="removeDraft(draft, search)"
+                                pTooltip="Delete" tooltipPosition="bottom"></button>
+                        <p-button label="PUBLISH" (click)="publishDraft(draft)" class="button_color_violet"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list__search-empty" *ngIf="!draftTotalCount && searchTitle">No any drafts</div>
+        </div>
+    </div>
+    <p-paginator [rows]="draftPageCount" [totalRecords]="draftTotalCount"
+                 (onPageChange)="chooseDraftPage($event.page + 1)" [alwaysShow]="false"
+                 [ngClass]="{'paginator-disabled': isRealoadDraftList}"
+                 *ngIf="!isReloadPaginator"></p-paginator>
+</div>
+<ng-template #emptyDraft>
+    <app-empty-view></app-empty-view>
+</ng-template>
+<ng-template #progressSpinner>
+    <div class="progress-spinner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-template>

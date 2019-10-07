@@ -1,0 +1,24 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-g-nopad position-templates">
+        <app-templates-choice [emptyView]="!(draftCount || videoCount)"></app-templates-choice>
+    </div>
+    <div class="position-drafts" *ngIf="draftCount || videoCount">
+        <div class="container">
+            <div class="ui-g-12 ui-g-nopad">
+                <p-tabView [activeIndex]="activeIndexTab">
+                    <p-tabPanel header="My drafts">
+                        <app-draft-list (setDraftCount)="draftCount = $event"></app-draft-list>
+                    </p-tabPanel>
+                    <p-tabPanel header="My videos">
+                        <app-video-list (setVideoCount)="videoCount = $event"></app-video-list>
+                    </p-tabPanel>
+                    <p-tabPanel header="My campaigns">
+                        <app-pipeline-list></app-pipeline-list>
+                    </p-tabPanel>
+                </p-tabView>
+            </div>
+        </div>
+    </div>
+</div>
+
+

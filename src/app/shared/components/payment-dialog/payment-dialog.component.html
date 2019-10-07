@@ -1,0 +1,27 @@
+<p class="payment-title">Time to Upgrade!</p>
+<p class="payment-text">To launch the campaign upgrade your plan</p>
+
+<div *ngIf="planeList.length; else progressSpinner" class="plane-wrapper">
+    <div *ngFor="let plane of planeList" class="plane">
+        <div class="plane-icon">
+            <i class="pi pi-star"></i>
+        </div>
+        <p class="plane-title">{{plane.title}}</p>
+        <ng-template ngFor let-description [ngForOf]="plane.description.split('@')">
+            <p>{{description}}</p>
+        </ng-template>
+        <div class="plane-bottom">
+            <p class="plane-price">${{plane.price}}/month</p>
+            <p-button class="button_color_green button_width_l"
+                      label="UPGRADE"
+                      [icon]="isSetPlane ? 'pi pi-spin pi-spinner' : ''"
+                      (click)="setPlane(plane.id)">
+            </p-button>
+        </div>
+    </div>
+</div>
+<ng-template #progressSpinner>
+    <div class="progress-spinner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-template>

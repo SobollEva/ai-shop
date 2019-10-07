@@ -1,0 +1,190 @@
+<!--TODO: use setupView.params in slides-->
+<div class="sketch-box animation" [ngClass]="currentFormat">
+  <div class="sketch-box__item"
+       [style.width.px]="16*draftWidth"
+       [style.height.px]="16*draftHeight">
+    <div class="wrapper-animation-play"
+         *ngIf="!isPlay">
+      <div class="play-animation"
+           (click)="showAnimation(true)">
+        <span>&#9658;</span>
+      </div>
+    </div>
+    <div class="content"
+         [ngClass]="{'st-valentine-animation': !setupView.params.color_percents_background && !isPoster,
+         'st-valentine': !setupView.params.color_percents_background && isPoster}"
+         [ngStyle]="{'background-color': setupView.params.color_percents_background | color}">
+      <div class="content__percents_size-l" *ngIf="setupView.params.color_percents_background"
+           [ngStyle]="{'color': setupView.params.color_percents | color,
+           'font-size': currentFormat === 'vertical' ? 19*ratio +'em' : 21*ratio +'em'}">
+        %
+      </div>
+      <div class="content__percents_size-s" *ngIf="setupView.params.color_percents_background"
+           [ngStyle]="{'color': setupView.params.color_percents | color,
+           'font-size': currentFormat === 'square' ? 9*ratio +'em' : 12*ratio +'em'}">
+        %
+      </div>
+      <div class="poster" *ngIf="isPoster">
+        <div class="content__product" *ngIf="currentFormat !== 'horizontal'"
+             [ngStyle]="{'background-color': setupView.params.color_background | color}"
+             [ngClass]="{'content-product-move': isAnimation}">
+          <div class="content__product_img img-position-center"
+               [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+          </div>
+          <div class="content__product_price">
+            <div class="price_border-right"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+            <div class="price_border-top"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+            <div class="price_border-left"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+            <div class="price_border-bottom"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+            <div class="content__product_price-info"
+                 [ngStyle]="{'color': setupView.params.color_price | color,
+                 'font-size': 10*ratio +'px'}">
+              {{product?.price}}
+            </div>
+          </div>
+          <div class="content__product_title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75]"
+               [fontSizeList]="[7*ratio,9*ratio]">
+            {{product?.title}}
+          </div>
+        </div>
+        <div class="content__product" *ngIf="currentFormat === 'horizontal'"
+             [ngStyle]="{'background-color': setupView.params.color_background | color}">
+          <div class="content__product-left">
+            <div class="content__product_title"
+                 [ngStyle]="{'color': setupView.params.color_title | color}"
+                 [appFontSize]="product?.title"
+                 [limitSizeList]="[100,75]"
+                 [fontSizeList]="[8.3*ratio,10.2*ratio]">
+              {{product?.title}}
+            </div>
+            <div class="content__product_price">
+              <div class="price_border-right"
+                   [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+              <div class="price_border-top"
+                   [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+              <div class="price_border-left"
+                   [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+              <div class="price_border-bottom"
+                   [ngStyle]="{'background-color': setupView.params.color_price | color}"></div>
+              <div class="content__product_price-info"
+                   [ngStyle]="{'color': setupView.params.color_price | color,
+                   'font-size': 10*ratio +'px'}">
+                {{product?.price}}
+              </div>
+            </div>
+          </div>
+          <div class="content__product_img img-position-center"
+               [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+          </div>
+        </div>
+      </div>
+      <div class="content__product" *ngIf="currentFormat !== 'horizontal' && !isPoster && !isLastSlide"
+           [ngStyle]="{'background-color': setupView.params.color_background | color}"
+           [ngClass]="{ 'content-product-move' : isAnimation && !isFirstSlide, 'content-product-not-move':isAnimation && isFirstSlide}">
+        <div class="content__product_img img-position-center"
+             [ngClass]="{'product-img-move': isAnimation}"
+             [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+        </div>
+        <div class="content__product_price">
+          <div class="price_border-right"
+               [ngStyle]="{'background-color': setupView.params.color_price | color}"
+               [ngClass]="{'product-price-right-move':isAnimation}"></div>
+          <div class="price_border-top"
+               [ngStyle]="{'background-color': setupView.params.color_price | color}"
+               [ngClass]="{'product-price-top-move':isAnimation}"></div>
+          <div class="price_border-left"
+               [ngStyle]="{'background-color': setupView.params.color_price | color}"
+               [ngClass]="{'product-price-left-move':isAnimation}"></div>
+          <div class="price_border-bottom"
+               [ngStyle]="{'background-color': setupView.params.color_price | color}"
+               [ngClass]="{'product-price-bottom-move':isAnimation}"></div>
+          <div class="content__product_price-info"
+               [ngStyle]="{'color': setupView.params.color_price | color,
+               'font-size': 10*ratio +'px'}"
+               [ngClass]="{'product-price-move':isAnimation}">
+            {{product?.price}}
+          </div>
+        </div>
+        <div class="content__product_title"
+             [ngStyle]="{'color': setupView.params.color_title | color}"
+             [appFontSize]="product?.title"
+             [limitSizeList]="[100,75]"
+             [fontSizeList]="[7*ratio,9*ratio]"
+             [ngClass]="{'product-title-move':isAnimation}">
+          {{product?.title}}
+        </div>
+      </div>
+      <div class="content__product" *ngIf="currentFormat === 'horizontal' && !isPoster && !isLastSlide"
+           [ngStyle]="{'background-color': setupView.params.color_background | color}"
+           [ngClass]="{ 'content-product-move' : isAnimation && !isFirstSlide, 'content-product-not-move':isAnimation && isFirstSlide}">
+        <div class="content__product-left">
+          <div class="content__product_title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75]"
+               [fontSizeList]="[8.3*ratio,10.2*ratio]"
+               [ngClass]="{'product-title-h-move':isAnimation}">
+            {{product?.title}}
+          </div>
+          <div class="content__product_price">
+            <div class="price_border-right"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"
+                 [ngClass]="{'product-price-right-move':isAnimation}"></div>
+            <div class="price_border-top"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"
+                 [ngClass]="{'product-price-top-move':isAnimation}"></div>
+            <div class="price_border-left"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"
+                 [ngClass]="{'product-price-left-move':isAnimation}"></div>
+            <div class="price_border-bottom"
+                 [ngStyle]="{'background-color': setupView.params.color_price | color}"
+                 [ngClass]="{'product-price-bottom-move':isAnimation}"></div>
+            <div class="content__product_price-info"
+                 [ngStyle]="{'color': setupView.params.color_price | color,
+                 'font-size': 10*ratio +'px'}"
+                 [ngClass]="{'product-price-move':isAnimation}">
+              {{product?.price}}
+            </div>
+          </div>
+        </div>
+        <div class="content__product_img img-position-center"
+             [ngClass]="{'product-img-h-move':isAnimation}"
+             [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+        </div>
+      </div>
+      <div class="last-slide-animation"
+           *ngIf="!isPoster && isLastSlide"
+           [ngStyle]="{'background-color': setupView.params.color_end_background | color}"
+           [ngClass]="{'last-slide-move':isLastSlideAnimation}">
+        <div class="content__last">
+          <div class="content__last_shop-title"
+               [ngStyle]="{'color': setupView.params.color_shop_title | color}"
+               [appFontSize]="setupView.params.shop_title"
+               [limitSizeList]="currentFormat === 'horizontal' ? [100,70,60] : [100,60,50]"
+               [fontSizeList]="currentFormat === 'horizontal' ? [9*ratio,11.5*ratio,13*ratio] : [8.2*ratio,9*ratio,11.5*ratio]">
+            {{setupView.params.shop_title}}
+          </div>
+          <div class="content__last_sale-header"
+               [ngStyle]="{'color': setupView.params.color_sale_header | color,
+               'font-size': currentFormat === 'vertical' ? 15*ratio +'px' : (currentFormat === 'square'? 18*ratio +'px' : 30*ratio +'px')}"
+               [ngClass]="{'last-slide-message-move':isLastSlideAnimation}">
+            {{setupView.params.sale_header}}
+          </div>
+          <div class="content__last_sale-message"
+               [ngStyle]="{'color': setupView.params.color_sale_message | color,
+               'font-size': currentFormat === 'vertical' ? 10*ratio +'px' : 14*ratio +'px'}"
+               [ngClass]="{'last-slide-message-move':isLastSlideAnimation}">
+            {{setupView.params.sale_message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

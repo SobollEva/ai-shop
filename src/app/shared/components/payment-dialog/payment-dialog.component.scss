@@ -1,0 +1,93 @@
+:host {
+  text-align: center;
+  padding: 15px;
+  display: block;
+}
+
+.plane-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #95bf47;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pi.pi-star {
+  color: #ffffff;
+  font-size: 65px;
+}
+
+.payment-title {
+  color: #95bf47;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.payment-text {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+}
+
+.plane {
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 #d9d9d9;
+  background-color: #ffffff;
+  padding: 15px 15px 95px;
+  width: 245px;
+  position: relative;
+}
+
+.plane-bottom {
+  position: absolute;
+  width: 88%;
+  bottom: 15px;
+}
+
+.plane:not(:first-child) {
+  margin-left: 20px;
+}
+
+.plane-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.plane-title,
+.plane-price {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+::ng-deep .payment-dialog {
+  .ui-widget-header {
+    border: 1px solid #ffffff !important;
+    background-color: #ffffff !important;
+    padding: 15px 15px 0 !important;
+  }
+
+  .ui-dialog-content {
+    border: 1px solid #ffffff !important;
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #7d25fb;
+  }
+  40% {
+    stroke: #5715b6;
+  }
+  66% {
+    stroke: #d8d8d8;
+  }
+  80%,
+  90% {
+    stroke: #5715b6;
+  }
+}

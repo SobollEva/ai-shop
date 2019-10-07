@@ -1,0 +1,42 @@
+.daily-budget {
+  position: relative;
+}
+
+.budget_symbol-currency {
+  position: absolute;
+  padding: 8px 12px;
+  right: 1px;
+  border-left: 1px solid #c6c6c6;
+}
+
+.daily-budget-input {
+  padding-right: 26px;
+}
+
+.bid-budget {
+  position: relative;
+  width: 46%;
+}
+
+.bid-budget-input {
+  border-radius: 0 3px 3px 0;
+}
+
+.button-group_text-field {
+  width: 100%;
+}
+
+body .button-group_text-field .ui-inputtext {
+  border-radius: 0 3px 3px 0 !important;
+}
+
+::ng-deep p-calendar {
+  .ui-calendar {
+    width: 100% !important;
+  }
+
+  .ui-calendar-button {
+    position: absolute;
+    right: 0;
+  }
+}

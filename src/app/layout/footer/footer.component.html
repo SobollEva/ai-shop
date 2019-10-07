@@ -1,0 +1,4 @@
+<div *ngFor="let widgetSetup of (widgetList$ | async); let i = index">
+    <app-widget-publish [widgetSetup]="widgetSetup" (widgetRemove)="widgetRemove(i)">
+    </app-widget-publish>
+</div>

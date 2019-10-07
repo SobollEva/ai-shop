@@ -1,0 +1,9 @@
+<div class="template-demo-video" *ngIf="videoDemo.length">
+  <div *ngFor="let video of videoDemo" class="template-demo-video__item">
+    <video preload="metadata" controls [width]="video.width"
+           [poster]="video.preview">
+      <source [src]="video.example" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+      Sorry, your browser doesn't support embedded videos.
+    </video>
+  </div>
+</div>

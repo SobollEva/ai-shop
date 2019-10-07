@@ -1,0 +1,182 @@
+<form [formGroup]="formMain">
+    <!--Account-->
+    <div class="setup-box"
+         [ngClass]="{'hide-setup-box':formMain.get('adset').value && formMain.get('adset').value.id}">
+        <p class="setup-box__title">Account</p>
+        <div class="setup-box__item">
+            <app-control [title]="'Facebook page'">
+                <ng-container *appShowPreloader="isFbPageLoading">
+                    <p-dropdown [options]="fbPageList"
+                                optionLabel="name"
+                                formControlName="selectedFbPage"
+                                dataKey="id"
+                                [filter]="true"
+                                placeholder="Select a page"></p-dropdown>
+                    <p-message
+                            *ngIf="isCheckValidation && formMain.get('selectedFbPage').invalid"
+                            class="ui-fluid"
+                            severity="error"
+                            text="Facebook page is required"></p-message>
+
+                </ng-container>
+            </app-control>
+        </div>
+        <div class="setup-box__item">
+            <app-control [title]="'Ad account'">
+                <ng-container *appShowPreloader="isAdAccountLoading">
+                    <p-dropdown [options]="adAccountList"
+                                optionLabel="name"
+                                formControlName="selectedAdAccount"
+                                dataKey="id"
+                                [filter]="true"
+                                placeholder="Select an adaccount"
+                                (onChange)="changeCurrency($event.value)"></p-dropdown>
+                    <p-message
+                            *ngIf="isCheckValidation && formMain.get('selectedAdAccount').invalid"
+                            class="ui-fluid"
+                            severity="error"
+                            text="Ad account is required"></p-message>
+                </ng-container>
+            </app-control>
+        </div>
+        <div class="setup-box__item">
+            <app-control [title]="'Instagram Account'">
+                <ng-container *appShowPreloader="isIgLoading">
+                    <p-dropdown [options]="igAccountList"
+                                optionLabel="username"
+                                formControlName="selectedIgAccount"
+                                dataKey="id"
+                                [filter]="true"
+                                placeholder="Select an instagram account"></p-dropdown>
+                </ng-container>
+            </app-control>
+        </div>
+        <div class="setup-box__item">
+            <app-control [title]="'Pixel'">
+                <ng-container *appShowPreloader="isPixelLoading">
+                    <p-dropdown [options]="pixelList"
+                                optionLabel="name"
+                                formControlName="selectedPixel"
+                                dataKey="id"
+                                [filter]="true"
+                                placeholder="Select a pixel"></p-dropdown>
+                    <p-message
+                            *ngIf="isCheckValidation && formMain.get('selectedPixel').invalid"
+                            class="ui-fluid"
+                            severity="error"
+                            text="Pixel is required"></p-message>
+                </ng-container>
+            </app-control>
+        </div>
+    </div>
+    <!--/Account-->
+    <!--Name-->
+    <div class="setup-box">
+        <p class="setup-box__title">Name</p>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Campaign name</span>
+            <app-choose-item formControlName="campaign"
+                             placeholder="Enter a campaign name"
+                             [itemType]="'adcampaigns'"
+                             [adAccount]="formMain.get('selectedAdAccount')"></app-choose-item>
+            <p-message
+                    *ngIf="isCheckValidation && formMain.get('campaign').invalid"
+                    class="ui-fluid"
+                    severity="error"
+                    text="Campaign name is required"></p-message>
+        </div>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Adset name</span>
+            <app-choose-item formControlName="adset"
+                             placeholder="Enter an adset name"
+                             [itemType]="'adsets'"
+                             [adAccount]="formMain.get('selectedAdAccount')"
+                             [campaign]="formMain.get('campaign')"></app-choose-item>
+            <p-message
+                    *ngIf="isCheckValidation && formMain.get('adset').invalid"
+                    class="ui-fluid"
+                    severity="error"
+                    text="Adset name is required"></p-message>
+        </div>
+    </div>
+    <!--/Name-->
+    <!--Budget-->
+    <div class="setup-box"
+         [ngClass]="{'hide-setup-box':formMain.get('adset').value && formMain.get('adset').value.id}">
+        <p class="setup-box__title">Budget</p>
+        <div class="setup-box__item">
+            <span class="setup-box__content-item_subtitle">Daily budget</span>
+            <div class="daily-budget">
+                <input pInputText
+                       formControlName="dailyBudget"
+                       type="text"
+                       placeholder="Enter maximum amount you want to spend"
+                       class="daily-budget-input"/>
+                <span class="budget_symbol-currency main-theme">{{currencySymbol
+                || '$'}}</span>
+            </div>
+            <p-message *ngIf="isCheckValidation && formMain.get('dailyBudget').invalid"
+                       class="ui-fluid"
+                       severity="error"
+                       text="Budget is required"></p-message>
+        </div>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Bid</span>
+            <div class="button-group" formGroupName="formBid">
+                <p-button *ngFor="let bid of bidStrategyList"
+                          class="button_color_violet"
+                          [label]="bid.name"
+                          (click)="setFormControlBidValue('bidStrategy', bid.value)"
+                          [ngClass]="{'not-active': formMain.get('formBid').get('bidStrategy').value !== bid.value}"></p-button>
+                <div class="bid-budget"
+                     [ngClass]="formMain.get('formBid').get('bidStrategy').value === 'LOWEST_COST_WITH_BID_CAP' ? 'show-inline': 'hide-element'">
+                    <input pInputText
+                           formControlName="bidAmount"
+                           type="number"
+                           placeholder="Enter your bid"
+                           class="bid-budget-input"/>
+                    <span class="budget_symbol-currency main-theme">{{currencySymbol || '$'}}</span>
+                </div>
+            </div>
+            <p-message *ngIf="isCheckValidation && formMain.get('formBid').invalid"
+                       class="ui-fluid"
+                       severity="error"
+                       text="Bid is required"></p-message>
+        </div>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Schedule</span>
+            <p-calendar class="button_color_violet"
+                        formControlName="schedule"
+                        dateFormat="M yy, dd"
+                        selectionMode="range"
+                        [showIcon]="true"
+                        [defaultDate]="todayDate"></p-calendar>
+            <p-message *ngIf="isCheckValidation && formMain.get('schedule').invalid"
+                       class="ui-fluid"
+                       severity="error"
+                       text="Date of end should be more then date of start"></p-message>
+        </div>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Optimize for</span>
+            <div class="button-group">
+                <p-button *ngFor="let goal of goalList"
+                          class="button_color_violet"
+                          [label]="goal.name"
+                          [ngClass]="{'not-active': formMain.get('optimizationGoal').value !== goal.value}"
+                          (click)="setFormControlValue('optimizationGoal', goal.value)"></p-button>
+            </div>
+        </div>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Pay for</span>
+            <div class="button-group">
+                <p-button *ngFor="let bEvent of billingEventList"
+                          class="button_color_violet"
+                          [label]="bEvent.name"
+                          [ngClass]="{'not-active': formMain.get('billingEvent').value !== bEvent.value,
+                              'hide-element': bEvent.value ==='LINK_CLICKS' && formMain.get('optimizationGoal').value !=='LINK_CLICKS'}"
+                          (click)="setFormControlValue('billingEvent', bEvent.value)"></p-button>
+            </div>
+        </div>
+    </div>
+    <!--/Budget-->
+</form>

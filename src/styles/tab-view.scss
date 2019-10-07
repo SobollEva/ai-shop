@@ -1,0 +1,42 @@
+body .ui-tabview-nav {
+  border-bottom: 1px solid #c3c0c0 !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  display: flex;
+  justify-content: center;
+
+  li {
+    border: none !important;
+    border-bottom: 3px solid transparent !important;
+    background-color: transparent !important;
+    margin: 0 10px 0 0 !important;
+  }
+
+  li.ui-state-active {
+    background-color: transparent !important;
+    border-bottom: 3px solid #7d25fb !important;
+  }
+
+  li a {
+    color: #c3c0c0 !important;
+    font-weight: normal !important;
+    font-size: 18px !important;
+    padding: .3em .8em !important;
+  }
+
+  li.ui-state-active a {
+    color: #7d25fb !important;
+  }
+
+  li:active,
+  li:focus,
+  li a:active,
+  li a:focus {
+    outline: none;
+  }
+}
+
+body .ui-tabview .ui-tabview-panels {
+  padding: 0 !important;
+  border: 1px solid transparent !important;
+}

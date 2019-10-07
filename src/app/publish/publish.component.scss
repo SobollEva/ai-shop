@@ -1,0 +1,153 @@
+.publish {
+  margin-top: 133px;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.campaign {
+  width: 100%;
+}
+
+.preview {
+  position: fixed;
+  top: 176px;
+  right: 0;
+  width: 39%;
+}
+
+.preview__content_title {
+  color: #7d25fb;
+  font-size: 16px;
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #7d25fb;
+  }
+  40% {
+    stroke: #5715b6;
+  }
+  66% {
+    stroke: #d8d8d8;
+  }
+  80%,
+  90% {
+    stroke: #5715b6;
+  }
+}
+
+::ng-deep p-message {
+  .ui-message {
+    margin-top: 10px;
+  }
+}
+
+video {
+  border: 1px solid #7d25fb;
+}
+
+.setup-box {
+  width: 54%;
+  margin-top: 20px;
+}
+
+.setup-box__item_subtitle {
+  color: #000000;
+  font-size: 16px;
+}
+
+.setup-box__title {
+  font-size: 16px;
+  color: #7d25fb;
+  margin-bottom: 10px;
+}
+
+.reach {
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.reach__title {
+  color: #7d25fb;
+}
+
+.reach__result {
+  color: #c3c0c0;
+}
+
+.setup-box__item {
+  margin-bottom: 15px;
+}
+
+.setup-box__item:last-child {
+  margin-bottom: 0;
+}
+
+.setup-box__item_control {
+  color: #434243;
+}
+
+*::placeholder {
+  color: rgba(28, 27, 33, 0.3) !important;
+}
+
+.hide-setup-box {
+  display: none;
+}
+
+::ng-deep .button_color_light-violet {
+  margin-right: 10px;
+}
+
+/*form controls*/
+::ng-deep .ui-dropdown-panel {
+  .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+  .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight {
+    background-color: #7d25fb !important;
+  }
+
+  .ui-dropdown-filter-container .ui-dropdown-filter-icon {
+    color: #7d25fb !important;
+  }
+}
+
+::ng-deep .ui-dropdown,
+::ng-deep input.ui-inputtext,
+::ng-deep textarea.ui-inputtext {
+  width: 100% !important;
+  border: solid 1px #ebebeb !important;
+}
+
+
+::ng-deep .ui-radiobutton {
+  .ui-radiobutton-box.ui-state-active {
+    border-color: #5715b6 !important;
+    background-color: #ffffff !important;
+  }
+
+  .ui-radiobutton-box.ui-state-active .ui-radiobutton-icon {
+    background-color: #5715b6 !important;
+  }
+
+}
+
+::ng-deep .publish-tab {
+  .ui-widget-header {
+    position: fixed;
+    width: 1200px;
+    background-color: #ffffff !important;
+    z-index: 99;
+    padding-top: 25px !important;
+    top: 105px;
+  }
+
+  .ui-tabview-panels {
+    margin-top: 37px;
+  }
+
+  .ui-tabview-nav {
+    justify-content: flex-start;
+  }
+}

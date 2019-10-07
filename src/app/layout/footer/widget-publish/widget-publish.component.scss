@@ -1,0 +1,124 @@
+:host {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px #c6c6c6;
+  width: 350px;
+  position: relative;
+  bottom: 20px;
+  display: block;
+  margin-right: 5px;
+}
+
+.widget-header {
+  background-color: #7e57c2;
+  color: #ffffff;
+  border-radius: 5px 5px 0 0;
+}
+
+.widget-mini,
+.widget-header {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-mini {
+  background-color: #ffffff;
+}
+
+.widget-header__group-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80px;
+}
+
+.widget-content {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
+}
+
+.widget-content__link {
+  color: #7e57c2;
+  cursor: pointer;
+}
+
+.widget-remove {
+  background-color: #673ab7;
+  font-size: 10px;
+}
+
+.widget-turn-down {
+  background-color: #673ab7;
+  transform: rotate(90deg);
+  font-size: 16px;
+}
+
+.widget-turn-up {
+  background-color: #cbbce7;
+  transform: rotate(-90deg);
+  font-size: 16px;
+}
+
+.widget-toggle {
+  cursor: pointer;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 20px;
+}
+
+.widget-toggle:hover {
+  opacity: 0.7;
+}
+
+.widget-header.error {
+  background-color: #e87e91;
+}
+
+.widget-content__error-message {
+  margin-bottom: 10px;
+}
+
+.widget-mini__progress-bar {
+  width: 285px;
+}
+
+::ng-deep p-progressBar {
+  .ui-progressbar {
+    height: 5px;
+    margin: 10px 0;
+  }
+
+  .ui-progressbar-value {
+    background: #7e57c2 !important;
+  }
+}
+
+::ng-deep .widget-button-close {
+  .ui-button {
+    background-color: #673ab7 !important;
+    border-color: #673ab7 !important;
+    font-size: 12px;
+  }
+
+  .ui-button-text {
+    padding: 3px 5px !important;
+  }
+}
+
+::ng-deep p-progressBar.error {
+  .ui-progressbar-value {
+    background: #e87e91 !important;
+  }
+}
+
+::ng-deep p-progressBar.success {
+  .ui-progressbar-value {
+    background: #95bf47 !important;
+  }
+}

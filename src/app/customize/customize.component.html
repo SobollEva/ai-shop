@@ -1,0 +1,267 @@
+<p-dialog [(visible)]="isSaveDraftDisplay" [modal]="true"
+          [responsive]="true" [width]="510" [minY]="70"
+          [maximizable]="true" [baseZIndex]="20000"
+          [blockScroll]="true">
+  <p-header>
+    <p>Title`s draft</p>
+  </p-header>
+  <input type="text" pInputText placeholder="Enter draft title" #draftTitle
+         [value]="templateTitle" class="draft-list__modal">
+  <p-footer>
+    <p-button class="button_color_violet"
+              label="Save"
+              (click)="saveDraft(draftTitle.value)"></p-button>
+  </p-footer>
+</p-dialog>
+<p-dialog [(visible)]="isOverlayDisplay" [modal]="true"
+          [responsive]="true" [width]="500" [minWidth]="200" [minY]="70"
+          [maximizable]="true" [baseZIndex]="20000" [blockScroll]="true">
+  <p-header>
+    <p>Draft overlays</p>
+  </p-header>
+  <div *ngFor="let overlay of overlayList" class="modal-overlay">
+    <img [src]="'/assets/images/christmas/'+ overlay +'.png'" width="300">
+    <p-button class="button_color_violet"
+              label="Add"
+              (click)="addOverlay(overlay)"></p-button>
+  </div>
+</p-dialog>
+<p-dialog [(visible)]="!isDraftExist" [modal]="true"
+          [responsive]="true" [width]="350" [minWidth]="200"
+          [minY]="70" [height]="400"
+          [maximizable]="true" [baseZIndex]="20000" [closeOnEscape]="false"
+          [blockScroll]="true"
+          class="publish-dialog">
+  <div class="publish-dialog__message">
+    <p>You don`t have any draft for customizing.
+      Please, create or choose some draft. <a routerLink="/app/templates">Go to templates</a></p>
+  </div>
+</p-dialog>
+<p-dialog [(visible)]="isPreviewDraftDisplay" [modal]="true"
+          [responsive]="true" [dismissableMask]="true"
+          [maximizable]="true" [baseZIndex]="20000" [blockScroll]="true"
+          *ngIf="isPreviewDraftDisplay"
+          class="draft-preview-dialog">
+  <div [ngSwitch]="draftView" class="draft-preview-wrapper">
+    <ng-template ngSwitchCase="sale">
+      <app-sale [setupView]="previewDraft | preview"
+                [ratio]="'3'"
+                [isPlay]="true"></app-sale>
+    </ng-template>
+    <ng-template ngSwitchCase="discount">
+      <app-discount [setupView]="previewDraft | preview"
+                    [previewFormat]="previewFormat"
+                    [ratio]="'2.6'"
+                    [isPlay]="true"></app-discount>
+    </ng-template>
+    <ng-template ngSwitchCase="product">
+      <app-product [setupView]="previewDraft | preview"
+                   [previewFormat]="previewFormat"
+                   [ratio]="'2.6'"
+                   [isPlay]="true"></app-product>
+    </ng-template>
+    <ng-template ngSwitchCase="goods">
+      <app-goods [setupView]="previewDraft | preview"
+                 [previewFormat]="previewFormat"
+                 [ratio]="'2.6'"
+                 [isPlay]="true"></app-goods>
+    </ng-template>
+    <ng-template ngSwitchCase="slide">
+      <app-slide [setupView]="previewDraft | preview"
+                 [ratio]="'2.6'"
+                 [isPlay]="true"></app-slide>
+    </ng-template>
+    <ng-template ngSwitchCase="front">
+      <app-front [setupView]="previewDraft | preview"
+                 [ratio]="'2.6'"
+                 [isPlay]="true"></app-front>
+    </ng-template>
+    <ng-template ngSwitchCase="dance">
+      <app-dance [setupView]="previewDraft | preview"
+                         [ratio]="'2.6'"
+                         [isPlay]="true"></app-dance>
+    </ng-template>
+    <ng-template ngSwitchCase="flip">
+      <app-flip [setupView]="previewDraft | preview"
+                [ratio]="'2.6'"
+                [isPlay]="true"></app-flip>
+    </ng-template>
+  </div>
+</p-dialog>
+<div class="customize-wrapper ui-g-12 ui-g-nopad">
+  <div class="customize-view ui-g-9 ui-g-nopad">
+    <div [ngSwitch]="draftView" *ngIf="!isDraftLoading">
+      <ng-template ngSwitchCase="sale">
+        <app-sale-slides [setupView]="customizeService.setupView"
+                        (isSetLastSlide)="isLastSlide = $event"
+                        [draftHeight]="draftHeight"
+                        [draftWidth]="draftWidth"
+                        (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+
+        </app-sale-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="discount">
+        <app-discount-slides [setupView]="customizeService.setupView"
+                            [currentFormat]="currentFormat"
+                            (isSetLastSlide)="isLastSlide = $event"
+                            [draftHeight]="draftHeight"
+                            [draftWidth]="draftWidth"
+                            (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+        </app-discount-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="goods">
+        <app-goods-slides [setupView]="customizeService.setupView"
+                         [currentFormat]="currentFormat"
+                         (isSetLastSlide)="isLastSlide = $event"
+                         [draftHeight]="draftHeight"
+                         [draftWidth]="draftWidth"
+                         (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+        </app-goods-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="product">
+        <app-product-slides [setupView]="customizeService.setupView"
+                           [currentFormat]="currentFormat"
+                           (isSetLastSlide)="isLastSlide = $event"
+                           [draftHeight]="draftHeight"
+                           [draftWidth]="draftWidth"
+                           (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+        </app-product-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="slide">
+        <app-slide-slides [setupView]="customizeService.setupView"
+                         (isSetLastSlide)="isLastSlide = $event"
+                         [draftHeight]="draftHeight"
+                         [draftWidth]="draftWidth"
+                         (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+
+        </app-slide-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="front">
+        <app-front-slides [setupView]="customizeService.setupView"
+                         (isSetLastSlide)="isLastSlide = $event"
+                         [draftHeight]="draftHeight"
+                         [draftWidth]="draftWidth"
+                         (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+
+        </app-front-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="dance">
+        <app-dance-slides [setupView]="customizeService.setupView"
+                         (isSetLastSlide)="isLastSlide = $event"
+                         [draftHeight]="draftHeight"
+                         [draftWidth]="draftWidth"
+                         (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+
+        </app-dance-slides>
+      </ng-template>
+      <ng-template ngSwitchCase="flip">
+        <app-flip-slides [setupView]="customizeService.setupView"
+                        (isSetLastSlide)="isLastSlide = $event"
+                        [draftHeight]="draftHeight"
+                        [draftWidth]="draftWidth"
+                        (isPreviewDraftDisplay)="isPreviewDraftDisplay = $event">
+        </app-flip-slides>
+      </ng-template>
+    </div>
+    <div *ngIf="isDraftLoading">
+      <div class="main-preloader">
+        <p>Waiting for getting draft...</p>
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </div>
+  </div>
+  <div class="customize-edit ui-g-3 ui-g-nopad">
+    <h1 class="customize-edit__panel-title">Customize your ad</h1>
+    <div class="customize-edit-box">
+      <p-progressSpinner *ngIf="!productTopList.length"></p-progressSpinner>
+      <div [ngStyle]="{'display': isLastSlide || !productTopList.length ? 'none':'block'}"
+           class="customize-edit-box__product-img">
+        <h3 class="customize-edit-box__subtitle">Image</h3>
+        <img
+          src="{{customizeService.previewSlide?.title ? customizeService.previewSlide?.image : productTopList[0]?.image}}"
+          width="50%"/>
+        <p-button label="Change product"
+                  (click)="openProductDialog()"
+                  class="button_color_gray button_width_l"></p-button>
+      </div>
+      <div [ngStyle]="{'display': isLastSlide && isOverlayExist ? 'block':'none'}">
+        <h3 class="customize-edit-box__subtitle">Overlay</h3>
+        <img [src]="'/assets/images/christmas/'+ activeOverlay +'.png'" width="100%"/>
+        <p-button label="Choose overlay"
+                  (click)="isOverlayDisplay = true"
+                  class="button_color_gray button_width_l"></p-button>
+      </div>
+      <h3 class="customize-edit-box__subtitle">Format</h3>
+      <div *ngFor="let templateFormat of templateFormatList; let i = index"
+           class="customize-edit-box__format ui-g-12 ui-g-nopad">
+
+        <div class="format-icons ui-g-3 ui-g-nopad">
+          <div *ngFor="let icon of draftFormat[templateFormat.format].icon"
+               class="format-icons__item"><i [class]="icon"></i></div>
+        </div>
+        <div class="format-view ui-g-3 ui-g-nopad"
+             [ngClass]="draftFormat[templateFormat.format].class">
+          <span [ngClass]="{'format-view-active': i === activeFormat}"
+                (click)="setDraftFormat(templateFormat, i)"></span>
+        </div>
+        <div class="ui-g-6 ui-g-nopad">
+          <span>{{draftFormat[templateFormat.format].title}}</span>
+        </div>
+      </div>
+    </div>
+    <h1 class="customize-edit__panel-title">Edit color</h1>
+    <div class="customize-edit-box" *ngIf="isChangeTemplateColor">
+      <h3 class="customize-edit-box__subtitle">Template`s colors</h3>
+      <div class="customize-edit-box__color"
+           *ngFor="let color of bgColorList; let i = index"
+           (click)="changeBgColor(color, i)"
+           [ngClass]="{'color-active-bg': i === activeBgColor}">
+        <span [style.backgroundColor]="color.col1"></span>
+        <span [style.backgroundColor]="color.col2"
+              *ngIf="color.col2"></span>
+        <span [style.backgroundColor]="color?.col3"
+              *ngIf="color.col3"></span>
+        <span [style.backgroundColor]="color?.col4"
+              *ngIf="color.col4"></span>
+      </div>
+      <div class="customize-edit-box__color">
+        <p-colorPicker [(ngModel)]="colorPickerBg1"
+                       (onChange)="changeBgColor({col1: colorPickerBg1}, 999)"></p-colorPicker>
+        <p-colorPicker [(ngModel)]="colorPickerBg2"
+                       (onChange)="changeBgColor({col2: colorPickerBg2}, 999)"
+                       *ngIf="bgColorPickerPropertyList.includes('col2')"></p-colorPicker>
+        <p-colorPicker [(ngModel)]="colorPickerBg3"
+                       *ngIf="bgColorPickerPropertyList.includes('col3')"
+                       (onChange)="changeBgColor({col3:colorPickerBg3}, 999)"></p-colorPicker>
+        <p-colorPicker [(ngModel)]="colorPickerBg4"
+                       *ngIf="bgColorPickerPropertyList.includes('col4')"
+                       (onChange)="changeBgColor({col4:colorPickerBg4}, 999)"></p-colorPicker>
+      </div>
+    </div>
+    <div class="customize-edit-box">
+      <h3 class="customize-edit-box__subtitle">Text`s colors
+        <i class="pi pi-info-circle"
+           pTooltip="Double click on text to change color"
+           tooltipPosition="top"></i>
+      </h3>
+      <div class="customize-edit-box__color"
+           *ngFor="let color of fontColorList; index as i"
+           (click)="changeTextColor(color.textColor, i)"
+           [ngClass]="{'color-active-font': i === activeFontColor}">
+        <span [style.backgroundColor]="color.textColor"></span>
+      </div>
+      <p-colorPicker [(ngModel)]="colorPickerFont"
+                     (onChange)="changeTextColor(colorPickerFont, 99)"></p-colorPicker>
+    </div>
+    <p-button label="Save draft"
+              class="button_color_gray button_width_l"
+              [disabled]="!isDraftExist"
+              (click)="openSaveDraftDisplay('duplicate.svg')"></p-button>
+    <div class="customize-edit-box create-ad">
+      <p-button label="Publish"
+                [disabled]="!isDraftExist"
+                class="button_color_violet button_width_l"
+                (click)="openSaveDraftDisplay('publish')"></p-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<router-outlet></router-outlet>
+<div class="main-preloader" *ngIf="shopifyAuthorizationService.isAuthorizationLoading">
+  <p>Waiting...</p>
+  <p-progressSpinner></p-progressSpinner>
+</div>

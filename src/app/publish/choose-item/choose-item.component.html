@@ -1,0 +1,28 @@
+<div class="button-group">
+  <p-button
+    label="New"
+    (click)="setStatusItem('new', input.value)"
+    [ngClass]="{'not-active': statusItem !== 'new'}"
+    class="button_color_violet"></p-button>
+  <p-button label="Existing"
+            (click)="setStatusItem('existing', dropdown.value)"
+            [ngClass]="{'not-active': statusItem === 'new'}"
+            class="button_color_violet"
+            *ngIf="isCampaignExisting"></p-button>
+  <div class="button-group_text-field">
+    <input pInputText
+           type="text"
+           [placeholder]="placeholder"
+           [value]="value"
+           #input
+           (input)="onChange($event.target.value)"
+           [hidden]="statusItem === 'existing'"/>
+    <p-dropdown [options]="itemList"
+                optionLabel="name"
+                [filter]="true"
+                [placeholder]="placeholder"
+                (onChange)="onChange($event.value)"
+                #dropdown
+                [hidden]="statusItem === 'new'"></p-dropdown>
+  </div>
+</div>

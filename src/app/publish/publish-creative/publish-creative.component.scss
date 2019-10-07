@@ -1,0 +1,17 @@
+textarea {
+  height: auto !important;
+}
+
+.emoji {
+  position: relative;
+}
+
+app-emoji {
+  right: -8px;
+  top: 20px;
+  width: 37px;
+}
+
+.emoji-input {
+  padding-right: 30px;
+}

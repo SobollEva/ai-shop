@@ -1,0 +1,38 @@
+<div *ngIf="!isPipelineLoading; else progressSpinner">
+    <div *ngFor="let pipeline of pipelineList; let i = index" class="pipeline ui-g">
+        <div class="ui-g-12">
+            <div class="pipeline__index ui-g-1 ui-g-nopad ">{{i + 1}}</div>
+            <div class="ui-g-6 ui-g-nopad ">
+                <div *ngFor="let stage of pipeline.stages">
+                    <div *ngIf="stage.name === 'create_fb_ad'"
+                         class="pipeline__title">{{stage.input.campaigns[0].name}}</div>
+                </div>
+            </div>
+            <div [ngClass]="pipeline.status === null || pipeline.status === 'process' ? 'process' : pipeline.status"
+                 class="ui-g-1 ui-g-offset-1 ui-g-nopad  pipeline__status">
+                {{pipeline.status === null || pipeline.status === 'process' ? 'In progress' : (pipeline.status === 'complete') ? 'Created' : 'Error'}}
+            </div>
+            <div class="ui-g-2 ui-g-offset-1 ui-g-nopad  pipeline__result">
+                <p-button class="button_color_light-violet button_width_l"
+                          (click)="updatePipeline(pipeline.id, i)"
+                          label="UPDATE"
+                          *ngIf="pipeline.status === null || pipeline.status === 'process'"></p-button>
+                <p-button *ngIf="pipeline.status === 'error'"
+                          label="DELETE"
+                          (click)="deletePipeline(pipeline.id)"
+                          class="button_color_light-violet button_width_l"></p-button>
+                <p-button class="button_color_light-violet button_width_l"
+                          label="GO TO ADS MANAGER" (click)="goToAdsManager(pipeline)"
+                          *ngIf="pipeline.status === 'complete'"></p-button>
+            </div>
+        </div>
+        <div class="ui-g-12" *ngIf="pipeline.error">
+            <div class="error-message">{{pipeline.error | message}}</div>
+        </div>
+    </div>
+</div>
+<ng-template #progressSpinner>
+    <div class="progress-spinner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-template>

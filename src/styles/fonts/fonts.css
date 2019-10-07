@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url('./open-sans/OpenSans-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url('./open-sans/OpenSans-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: local('Bebas Neue'), url('./bebas-neue/BebasNeue.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: local('Bebas Neue'), url('./bebas-neue/BebasNeue-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue Light';
+  src: local('Bebas Neue'), url('./bebas-neue/BebasNeue-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Extra Bold';
+  src: local('Gilroy Extra Bold'), url('./gilroy/gilroy-extrabold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Source Sans Pro Regular'), url('./source-sans/source-sans-pro-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Source Sans Pro'), url('./source-sans/source-sans-pro-bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Source Sans Pro'), url('./source-sans/SourceSansPro-Black.ttf.woff2') format('woff2');
+}

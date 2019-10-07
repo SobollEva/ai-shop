@@ -1,0 +1,32 @@
+.sketch-box.animation .content_background {
+  transform: rotate(-4deg) scale(1.15);
+}
+
+@keyframes swipe2Move {
+  0% {
+    bottom: 5%;
+  }
+  50% {
+    bottom: 0;
+  }
+  100% {
+    bottom: 5%;
+  }
+}
+
+@keyframes imgRotate2Move {
+  0% {
+    transform: rotate(-4deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(4deg) scale(1.45);
+  }
+}
+
+.swipe-move {
+  animation: swipe2Move 1s linear infinite;
+}
+
+.img-rotate-move {
+  animation: imgRotate2Move 3s ease-out infinite;
+}

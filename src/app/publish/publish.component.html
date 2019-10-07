@@ -1,0 +1,112 @@
+<div class="publish">
+    <!-- Form -->
+    <div class="campaign">
+        <form [formGroup]="formPublish">
+            <p-tabView [activeIndex]="activeIndexTab" class="publish-tab" (onChange)="tabChange($event)">
+                <p-tabPanel header="Main"
+                            [disabled]="isMainPanelDisabled">
+                    <app-publish-main [isCheckValidation]="isMainFormChecked"></app-publish-main>
+                    <ng-container *ngTemplateOutlet="reach"></ng-container>
+                    <p-button (click)="checkValidation(1, formPublish.get('formMain'))" label="NEXT STEP"
+                              class="button_color_violet"
+                              [disabled]="isMainFormChecked && formPublish.get('formMain').invalid"></p-button>
+                </p-tabPanel>
+                <p-tabPanel header="Targeting"
+                            [disabled]="isTargetingPanelDisabled || isUseExistingAdset">
+                    <app-publish-targeting [isCheckValidation]="isTargetingFormChecked"></app-publish-targeting>
+                    <ng-container *ngTemplateOutlet="reach"></ng-container>
+                    <p-button (click)="setActiveTab(0)" label="BACK" class="button_color_light-violet"
+                              [disabled]="formPublish.get('formTargeting').invalid"></p-button>
+                    <p-button (click)="checkValidation(2, formPublish.get('formTargeting'))"
+                              label="NEXT STEP"
+                              class="button_color_violet"
+                              [disabled]="isTargetingFormChecked && formPublish.get('formTargeting').invalid"></p-button>
+                </p-tabPanel>
+                <p-tabPanel header="Ad details"
+                            [disabled]="isCreativePanelDisabled">
+                    <app-publish-creative [draft]="currentDraft"
+                                          [isCheckValidation]="isCreativeFormChecked"></app-publish-creative>
+                    <ng-container *ngTemplateOutlet="reach"></ng-container>
+                    <p-button (click)="setActiveTab(1)"
+                              label="BACK"
+                              [disabled]="formPublish.get('formCreative').invalid"
+                              class="button_color_light-violet"></p-button>
+                    <p-button [icon]="isPipelineCreate ? 'pi pi-spin pi-spinner' : ''"
+                              iconPos="right"
+                              [label]="isWidgetForm ? 'FIX PUBLISH' : 'PUBLISH'"
+                              class="button_color_violet"
+                              (click)="createCampaign()"
+                              [disabled]="isCreativeFormChecked || ((widgetList$ | async).length > 2 && !isWidgetForm)">
+                    </p-button>
+                </p-tabPanel>
+            </p-tabView>
+        </form>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview">
+        <p class="preview__content_title">Preview</p>
+        <div *ngIf="!isLoadDraft; else progressSpinner">
+            <div *ngIf="draftView" [ngSwitch]="draftView">
+                <ng-template ngSwitchCase="sale">
+                    <app-sale [setupView]="currentDraft"
+                              [ratio]="'2'"></app-sale>
+                </ng-template>
+                <ng-template ngSwitchCase="discount">
+                    <app-discount [setupView]="currentDraft"
+                                  [ratio]="'1.4'"></app-discount>
+                </ng-template>
+                <ng-template ngSwitchCase="product">
+                    <app-product [setupView]="currentDraft"
+                                 [ratio]="'1.4'"></app-product>
+                </ng-template>
+                <ng-template ngSwitchCase="goods">
+                    <app-goods [setupView]="currentDraft"
+                               [ratio]="'1.4'"></app-goods>
+                </ng-template>
+                <ng-template ngSwitchCase="slide">
+                    <app-slide [setupView]="currentDraft"
+                               [ratio]="'1.5'"></app-slide>
+                </ng-template>
+                <ng-template ngSwitchCase="front">
+                    <app-front [setupView]="currentDraft"
+                               [ratio]="'1.5'"></app-front>
+                </ng-template>
+                <ng-template ngSwitchCase="dance">
+                    <app-dance [setupView]="currentDraft"
+                               [ratio]="'1.5'"></app-dance>
+                </ng-template>
+                <ng-template ngSwitchCase="flip">
+                    <app-flip [setupView]="currentDraft"
+                              [ratio]="'1.5'"></app-flip>
+                </ng-template>
+                <ng-template ngSwitchCase="video">
+                    <video preload="metadata" controls width="250"
+                           [poster]="currentVideo.thumbnail">
+                        <source [src]="currentVideo.result" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        <source [src]="currentVideo.result" type='video/ogg; codecs="theora, vorbis"'>
+                        <source [src]="currentVideo.result" type='video/webm; codecs="vp8, vorbis"'>
+                        Sorry, your browser doesn't support embedded videos.
+                    </video>
+                </ng-template>
+            </div>
+            <div *ngIf="!draftView">
+                <app-custom-draft [draft]="currentDraft"></app-custom-draft>
+            </div>
+        </div>
+    </div>
+    <!-- /Preview -->
+</div>
+<ng-template #reach>
+    <div class="reach"
+         [ngClass]="{'hide-setup-box': isReachHide}">
+        <span class="reach__title">Reach: </span>
+        <span class="reach__result"> daily — {{reachInfo?.estimate_dau | number}}
+            monthly — {{reachInfo?.estimate_mau | number}}</span>
+    </div>
+</ng-template>
+<ng-template #progressSpinner>
+    <div style="text-align: left;">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-template>

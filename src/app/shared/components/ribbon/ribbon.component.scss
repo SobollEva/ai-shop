@@ -1,0 +1,17 @@
+.ribbon {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 #d9d9d9;
+  background-color: #fdf56c;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  line-height: 1.5;
+  padding: 5px 10px;
+}
+

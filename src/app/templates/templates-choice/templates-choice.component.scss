@@ -1,0 +1,283 @@
+:host {
+  min-width: 1200px;
+  width: 1200px;
+  margin: 0 auto;
+  display: block;
+  padding: 20px 0;
+}
+
+.template__button-menu_list {
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}
+
+
+.template-list_close {
+  text-align: right;
+}
+
+.choice-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.choice-title,
+.choice-box__title {
+  color: #7e57c2;
+}
+
+.choice-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.choice-box {
+  text-align: center;
+}
+
+.choice-box:not(:first-child) {
+  margin-left: 40px;
+}
+
+.choice-box__text {
+  color: #5b5b5b;
+  font-size: 16px;
+  height: 80px;
+  width: 280px;
+  margin-bottom: 0;
+}
+
+.choice-box__mark {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mark-tick {
+  background-image: url(/assets/images/templates/tick.png);
+}
+
+.mark-pen {
+  background-image: url(/assets/images/templates/pen.png);
+}
+
+.editor,
+.template-group {
+  width: 220px;
+  display: block;
+  margin: 0 auto;
+}
+
+.editor:hover .editor-format {
+  background-color: #cbbce7;
+}
+
+.editor:hover .editor-format-title,
+.template-group:hover .template-group__title,
+.template-group.active .template-group__title {
+  color: #7e57c2;
+}
+
+.editor-format {
+  background-color: #e5ddf4;
+  height: 160px;
+}
+
+.editor-format-title,
+.template-group__title {
+  font-size: 18px;
+  color: #b2b2b2;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.vertical {
+  margin: 0 25px;
+}
+
+.horizontal {
+  border-top: 32px solid #ffffff;
+  border-bottom: 32px solid #ffffff;
+}
+
+.template-group {
+  padding-top: 55px;
+  cursor: pointer;
+}
+
+.choice-box:hover ::ng-deep p-button.choice-box__button {
+  .ui-button {
+    background-color: #7e57c2;
+    border-color: #7e57c2;
+    color: #ffffff;
+  }
+}
+
+::ng-deep p-tabview.choice p-tabpanel {
+  .ui-tabview-panel {
+    background-color: #ffffff !important;
+    padding: 10px !important;
+  }
+}
+
+::ng-deep p-tabview.choice {
+  .ui-tabview-panels {
+    border-color: #ffffff !important;
+  }
+}
+
+.template {
+  width: 265px;
+}
+
+.template__view {
+  height: 126px;
+  width: 225px;
+  position: relative;
+}
+
+.template__view-img {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.template__button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.template__button-menu {
+  position: relative;
+  bottom: 0;
+  height: 40px;
+}
+
+.template__button-menu_list li {
+  text-align: center;
+  background-color: #f1eef9;
+  padding: 5px 0;
+  border-radius: 3px;
+  color: #7e57c2;
+  cursor: pointer;
+  margin-bottom: 1px;
+}
+
+.template__button-menu_list li:hover {
+  color: #ffffff;
+}
+
+.template__title {
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.empty-view-title {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  text-align: center;
+}
+
+.choice-title-empty-view {
+  margin-top: 75px;
+}
+
+::ng-deep p-overlaypanel {
+  .ui-overlaypanel {
+    bottom: 35px !important;
+    top: auto !important;
+    left: auto !important;
+    background-color: transparent !important;
+    border: none !important;
+    width: 100%;
+
+    &:after,
+    &:before {
+      border-width: 0;
+    }
+
+    &-flipped {
+      margin-bottom: 0;
+    }
+  }
+
+  .ui-overlaypanel-content {
+    padding: 0 !important;
+  }
+
+  .ui-shadow {
+    box-shadow: none;
+  }
+}
+
+::ng-deep p-button.choice-box__button {
+  .ui-button {
+    width: 225px;
+  }
+}
+
+::ng-deep p-carousel {
+  .ui-carousel-viewport {
+    border-color: transparent !important;
+    margin: 0 35px;
+  }
+
+  .ui-carousel-item {
+    border-color: transparent !important;
+  }
+
+  .ui-carousel-prev-button {
+    position: absolute;
+    left: -14px;
+  }
+
+  .ui-carousel-prev-button::before {
+    content: "\e900" !important;
+  }
+
+  .ui-carousel-next-button {
+    position: absolute;
+    right: -14px;
+  }
+
+  .ui-carousel-next-button::before {
+    content: "\e901" !important;
+  }
+
+  .ui-carousel .ui-carousel-header {
+    background-color: transparent !important;
+    border: none !important;
+    position: relative;
+    overflow: inherit;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ui-carousel-button {
+    width: 40px;
+    height: 40px;
+    background-color: #f8f6fc;
+    top: 125px;
+    border-radius: 5px;
+    color: #7e57c2 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ui-carousel-page-links {
+    float: none;
+  }
+
+  .ui-carousel-page-link {
+    color: #7e57c2 !important;
+  }
+}
+

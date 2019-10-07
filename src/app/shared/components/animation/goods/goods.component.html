@@ -1,0 +1,107 @@
+<div class="sketch-box animation" [ngClass]="currentFormat">
+  <div class="sketch-box__item"
+       [style.width.px]="16*draftWidth"
+       [style.height.px]="16*draftHeight">
+    <div class="wrapper-animation-play"
+         *ngIf="!isPlay">
+      <div class="play-animation"
+           (click)="showAnimation(true)">
+        <span>&#9658;</span>
+      </div>
+    </div>
+    <div class="content">
+      <div class="poster" *ngIf="isPoster">
+        <div class="product even-side"
+             [ngStyle]="{'background-color': setupView.params.color_background_c | color}">
+          <div class="product__img"
+               [style.backgroundColor]="setupView.params.color_background_a | color">
+            <div class="img-position-center"
+                 [ngStyle]="{'background-image': 'url('+product?.image+')'}"></div>
+          </div>
+          <div class="product__info">
+            <div class="product__title"
+                 [ngStyle]="{'color': setupView.params.color_title | color}"
+                 [appFontSize]="product?.title"
+                 [limitSizeList]="[100,75]"
+                 [fontSizeList]="currentFormat === 'square' ? [6*ratio,7*ratio] : [7*ratio,9.2*ratio]">
+              {{product?.title}}
+            </div>
+            <div class="product__price"
+                 [ngStyle]="{'color': setupView.params.color_price | color, 'font-size': currentFormat === 'square' ? 17.2*ratio +'px' : 15*ratio +'px'}">
+              {{product?.price}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product"
+           [ngClass]="[(isPrevOdd ? 'odd-side' : 'even-side'),(isFirstSlide ? '' : 'prev-slide-move'), (isLastSlide ? 'prev-slide-move' : '')]"
+           [ngStyle]="{'z-index': zIndex,'background-color': isPrevOdd ? (setupView.params.color_background_d | color) : (setupView.params.color_background_c | color)}">
+        <div class="product__img"
+             [style.backgroundColor]="setupView.params.color_background_a | color"
+             [ngClass]="isFirstSlide ? 'img-box-first-move-'+ currentFormat : ''">
+          <div class="img-position-center"
+               [ngStyle]="{'background-image': 'url('+prevProduct?.image+')'}"
+               [ngClass]="isFirstSlide ? 'img-move-'+ currentFormat : ''"></div>
+        </div>
+        <div class="product__info">
+          <div class="product__title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [ngClass]="{'title-move': isFirstSlide}"
+               [appFontSize]="prevProduct?.title"
+               [limitSizeList]="[100,75]"
+               [fontSizeList]="currentFormat === 'square' ? [6*ratio,7*ratio] : [7*ratio,9.2*ratio]">
+            {{prevProduct?.title}}
+          </div>
+          <div class="product__price"
+               [ngStyle]="{'color': setupView.params.color_price | color, 'font-size': currentFormat === 'square' ? 17.2*ratio +'px' : 15*ratio +'px'}"
+               [ngClass]="{'price-move': isFirstSlide}">
+            {{prevProduct?.price}}
+          </div>
+        </div>
+      </div>
+      <div class="product"
+           [ngStyle]="{'z-index': zIndex+1,'background-color': isOdd ? (setupView.params.color_background_d | color) : (setupView.params.color_background_c | color)}"
+           [ngClass]="[(isOdd ? 'odd-side' : 'even-side'), (isAnimation ? 'slide-move' : ''), (isLastSlide ? 'prev-slide-move' : '')]"
+           *ngIf="!isFirstSlide">
+        <div class="product__img"
+             [style.backgroundColor]="setupView.params.color_background_a | color"
+             [ngClass]="currentFormat !== 'horizontal' && isAnimation ? 'img-box-move-'+ currentFormat : ''">
+          <div class="img-position-center"
+               [ngStyle]="{'background-image': 'url('+product?.image+')'}"
+               [ngClass]="'img-move-'+ currentFormat"></div>
+        </div>
+        <div class="product__info">
+          <div class="product__title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75]"
+               [fontSizeList]="currentFormat === 'square' ? [6*ratio,7*ratio] : [7*ratio,9.2*ratio]">
+            {{product?.title}}
+          </div>
+          <div class="product__price"
+               [ngStyle]="{'color': setupView.params.color_price | color, 'font-size': currentFormat === 'square' ? 17.2*ratio +'px' : 15*ratio +'px'}">
+            {{product?.price}}
+          </div>
+        </div>
+      </div>
+
+      <div class="last-slide-animation"
+           *ngIf="isLastSlide"
+           [ngStyle]="{'background-color': setupView.params.color_background_f | color}"
+           [ngClass]="{'slide-move':isLastSlide}">
+        <div class="last">
+          <div class="last__sale-header"
+               [ngStyle]="{'color': setupView.params.color_sale_header | color,
+                             'font-size': currentFormat === 'horizontal' ? 25*ratio +'px' : 18*ratio +'px'}">
+            {{setupView.params.sale_header}}
+          </div>
+          <div class="last__sale-message"
+               [ngStyle]="{'color': setupView.params.color_sale_message | color,
+                             'font-size': currentFormat === 'horizontal' ? 27*ratio +'px' : 21*ratio +'px'}">
+            {{setupView.params.sale_message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

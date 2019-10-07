@@ -1,0 +1,141 @@
+<div class="sketch-box animation">
+  <div class="sketch-box__item"
+       *ngIf="!isLastSlide"
+       [style.width.px]="30*draftWidth"
+       [style.height.px]="30*draftHeight">
+    <div class="wrapper-animation-play"
+         *ngIf="!isPlay">
+      <div class="play-animation"
+           (click)="showAnimation(true)">
+        <span>&#9658;</span>
+      </div>
+    </div>
+    <div class="content" *ngIf="!isPoster">
+      <div class="content__top" [ngStyle]="{'background-color': setupView.params.color_background | color}">
+        <div class="content__top_img-overlay img-position-center"
+             [ngClass]="{'img-move': isAnimation}"
+             [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+        </div>
+      </div>
+      <div class="content__bottom"
+           [ngStyle]="{'background-color': setupView.params.color_title_background | color}"
+           [ngClass]="{'bottom-move': isAnimation}">
+        <div class="content__bottom_title"
+             [ngStyle]="{'background-color': setupView.params.color_title_background | color,
+             'color': setupView.params.color_header | color,
+             'font-size': 11*ratio +'px'}"
+             [ngClass]="{'header-move': isAnimation}">
+          {{setupView.params.header}}
+        </div>
+        <div class="content__bottom__product-info"
+             [ngClass]="{'title-move': isAnimation}">
+          <div class="content__bottom__product-info_title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75,45]"
+               [fontSizeList]="[4*ratio,6.3*ratio,8*ratio]">
+            {{product?.title}}
+          </div>
+          <div class="content__bottom__product-info_price"
+               [ngStyle]="{'background-color': setupView.params.color_price_background | color,
+               'color': setupView.params.color_price | color,
+               'font-size': 10*ratio +'px',
+               'border-radius': 2*ratio+'px'}">
+            {{product?.price}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content poster" *ngIf="isPoster">
+      <div class="content__top" [ngStyle]="{'background-color': setupView.color_background | color}">
+        <div class="content__top_img-overlay img-position-center"
+             [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+        </div>
+      </div>
+      <div class="content__bottom"
+           [ngStyle]="{'background-color': setupView.params.color_title_background | color}">
+        <div class="content__bottom_title"
+             [ngStyle]="{'background-color': setupView.params.color_title_background | color,
+             'color': setupView.params.color_header | color,
+             'font-size': 11*ratio +'px'}">
+          {{setupView.params.header}}
+        </div>
+        <div class="content__bottom__product-info"
+             [ngClass]="{'title-move': isAnimation}">
+          <div class="content__bottom__product-info_title"
+               [ngStyle]="{'color': setupView.params.color_title | color}"
+               [appFontSize]="product?.title"
+               [limitSizeList]="[100,75,45]"
+               [fontSizeList]="[4*ratio,6.3*ratio,8*ratio]">
+            {{product?.title}}
+          </div>
+          <div class="content__bottom__product-info_price"
+               [ngStyle]="{'background-color': setupView.params.color_price_background | color,
+               'color': setupView.params.color_price | color,
+               'font-size': 10*ratio +'px',
+               'border-radius': 2*ratio+'px'}">
+            {{product?.price}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sketch-box__item sketch-box__item_last"
+       *ngIf="isLastSlide && !isPoster"
+       [style.width.px]="30*draftWidth"
+       [style.height.px]="30*draftHeight">
+    <div class="content">
+      <div class="content__ribbon__last"
+           [ngStyle]="{'background-color': setupView.params.color_title_background | color}"
+           [ngClass]="{'ribbon-move': isLastSlideAnimation}"></div>
+      <div class="content__top__last"
+           [ngStyle]="{'color': setupView.params.color_shop_title | color}">
+        <div class="content__top__last_overlay" *ngIf="setupView.params.overlay"
+             [ngClass]="{'img-overlay-move': isLastSlideAnimation}">
+          <img [src]="'/assets/images/christmas/'+ setupView.params.overlay +'.png'" width="100%"/>
+        </div>
+        <div class="content__top__last_shop-title"
+             [ngClass]="{'shop-title-move': isLastSlideAnimation}"
+             [appFontSize]="setupView.params.shop_title"
+             [limitSizeList]="[100,40]"
+             [fontSizeList]="[9*ratio,17*ratio]">
+          {{setupView.params.shop_title}}
+        </div>
+        <div class="content__top__last_sale-header"
+             [ngStyle]="{'background-color': setupView.params.color_title_background | color,
+             'color': setupView.params.color_sale_header | color,
+             'font-size': 9*ratio +'px'}"
+             [ngClass]="{'sale-header-move': isLastSlideAnimation}">
+          {{setupView.params.sale_header}}
+        </div>
+      </div>
+      <div class="content__bottom__last"
+           [ngClass]="{'bottom-last-move': isLastSlideAnimation}">
+        <div class="content__bottom__last__sale-info">
+          <div class="content__bottom__last__sale-info_percent"
+               [ngStyle]="{'background-color': setupView.params.color_price_background | color,
+               'color': setupView.params.color_sale_percent | color,
+               'font-size': 16*ratio +'px',
+               'border-radius': 2*ratio+'px '+2*ratio+'px 0 0'}">
+            {{setupView.params.sale_percent}}
+          </div>
+          <div class="content__bottom__last__sale-info_title"
+               [ngStyle]="{'background-color': setupView.params.color_price_background | color,
+               'color': setupView.params.color_sale_title | color,
+               'font-size': 7*ratio +'px',
+               'border-radius': '0 0 '+2*ratio+'px '+2*ratio+'px'}">
+            {{setupView.params.sale_title}}
+          </div>
+        </div>
+        <div class="content__bottom__last__sale-message"
+             [ngStyle]="{'background-color': setupView.params.color_title_background | color, 'color': setupView.params.color_sale_message | color}"
+             [appFontSize]="setupView.params.sale_message"
+             [limitSizeList]="[150,75,45]"
+             [fontSizeList]="[5*ratio,8*ratio,9*ratio]">
+          {{setupView.params.sale_message}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

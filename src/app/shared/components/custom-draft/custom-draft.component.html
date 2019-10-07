@@ -1,0 +1,12 @@
+<div class="draft" [id]="draft.id" [style.height.px]="draft.params.size[0] == 854 ? '135' : '155'">
+    <div class="wrapper-animation-play">
+        <div class="play-animation"
+             *ngIf="isSign">
+            <span (click)="playAnimation(true)">&#9658;</span>
+        </div>
+        <div class="wrapper-animation"
+             *ngIf="!isSign"
+             (click)="stopAnimation()">
+        </div>
+    </div>
+</div>

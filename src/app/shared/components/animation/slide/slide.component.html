@@ -1,0 +1,46 @@
+<div class="sketch-box animation">
+  <div class="sketch-box__item"
+       [style.width.px]="16*draftWidth"
+       [style.height.px]="16*draftHeight">
+    <div class="wrapper-animation-play"
+         *ngIf="!isPlay">
+      <div class="play-animation"
+           (click)="showAnimation(true)">
+        <span>&#9658;</span>
+      </div>
+    </div>
+    <div class="content"
+         [ngStyle]="{'background-color': setupView.params.color_background | color}">
+      <div class="content__title"
+           [ngStyle]="{'color': setupView.params.color_title | color}"
+           [ngClass]="{'title-move': isAnimation}"
+           [appFontSize]="product?.title" [limitSizeList]="[100,50]"
+           [fontSizeList]="[7*ratio,8.5*ratio]">
+        {{product?.title}}
+      </div>
+      <div class="content__img img-position-center"
+           [ngStyle]="{'background-image': 'url('+product?.image+')'}"
+           [ngClass]="{'img-move': isAnimation}">
+      </div>
+      <div class="content__price"
+           [ngStyle]="{'color': setupView.params.color_price | color,
+           'font-size': 15*ratio +'px'}"
+           [ngClass]="{'price-move': isAnimation}">
+        {{product?.price}}
+      </div>
+      <div class="content__discount"
+           [ngStyle]="{'color': setupView.params.color_discount | color,
+           'font-size': 13*ratio +'px'}"
+           [ngClass]="{'discount-move': isAnimation}">
+        {{setupView.params.discount}}
+      </div>
+      <div class="content__bottom">
+          <span class="content__bottom__swipe"
+                [ngStyle]="{'color': setupView.params.color_swipe | color,
+                'font-size': 22*ratio +'px'}"
+                [ngClass]="{'swipe-move': isAnimation}">^
+          </span>
+      </div>
+    </div>
+  </div>
+</div>

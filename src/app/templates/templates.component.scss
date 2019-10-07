@@ -1,0 +1,94 @@
+.ui-g {
+  position: relative;
+  height: 100%;
+}
+
+.position-templates {
+  margin-top: 95px;
+  height: 450px;
+}
+
+.position-drafts {
+  width: 100%;
+}
+
+.color {
+  margin: 0;
+  padding: 5px;
+}
+
+
+.dialog-message {
+  text-align: center;
+}
+
+.dialog-input {
+  border: 1px solid #c3c0c0;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 5px;
+  margin: 15px 0;
+}
+
+.dialog-button {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.card {
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 #d9d9d9;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 2px 6px 0 #d9d9d9;
+}
+
+.card-list__body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card-list-item {
+  width: 285px;
+  margin-bottom: 20px;
+
+  &__view {
+    height: 155px;
+    width: 100%;
+  }
+
+  &:not(:first-child) {
+    margin-left: 16px;
+  }
+
+  &:nth-of-type(5) {
+    margin-left: 0;
+  }
+}
+
+.card-list-item__date {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(80, 85, 92, 0.5);
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #7d25fb;
+  }
+  40% {
+    stroke: #5715b6;
+  }
+  66% {
+    stroke: #d8d8d8;
+  }
+  80%,
+  90% {
+    stroke: #5715b6;
+  }
+}

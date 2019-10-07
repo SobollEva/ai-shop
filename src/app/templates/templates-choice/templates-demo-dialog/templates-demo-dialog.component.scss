@@ -1,0 +1,19 @@
+.template-demo-video {
+  display: flex;
+  align-items: center;
+}
+
+.template-demo-video__item img,
+video {
+  border: 1px solid #7d25fb;
+}
+
+.template-demo-video__item:nth-of-type(2n) {
+  margin: 0 10px;
+}
+
+::ng-deep p-dialog {
+  .ui-widget-header {
+    display: none !important;
+  }
+}

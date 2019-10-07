@@ -1,0 +1,58 @@
+<form [formGroup]="formCreative">
+    <div class="setup-box">
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Ad name</span>
+            <input type="text"
+                   pInputText
+                   placeholder="Enter ad name"
+                   formControlName="adName"
+                   class="setup-box__item_control"/>
+            <p-message *ngIf="isCheckValidation && formCreative.get('adName').invalid"
+                       class="ui-fluid"
+                       severity="error"
+                       text="Ad name is required"></p-message>
+        </div>
+        <div class="setup-box__item">
+            <span class="setup-box__item_subtitle">Url</span>
+            <p-dropdown [options]="urlList"
+                        optionLabel="url"
+                        formControlName="url"
+                        placeholder="Select call to action url"
+                        class="setup-box__item_control"></p-dropdown>
+        </div>
+        <div class="setup-box__item" *ngIf="!isUseExistingAdset">
+            <span class="setup-box__item_subtitle">Pixel Events</span>
+            <p-dropdown [options]="pixelEventsList"
+                        optionLabel="name"
+                        formControlName="pixelEvent"
+                        placeholder="Select event in the list"
+                        class="setup-box__item_control"></p-dropdown>
+        </div>
+        <div class="setup-box__item emoji">
+            <span class="setup-box__item_subtitle">Headline</span>
+            <input type="text"
+                   pInputText
+                   placeholder="Enter ad headline"
+                   formControlName="headline"
+                   class="emoji-input"
+                   class="setup-box__item_control"/>
+            <app-emoji [control]="formCreative.get('headline')"></app-emoji>
+            <p-message *ngIf="isCheckValidation && formCreative.get('headline').invalid"
+                       class="ui-fluid"
+                       severity="error"
+                       text="The max character limit is 40"></p-message>
+        </div>
+        <div class="setup-box__item emoji">
+            <span class="setup-box__item_subtitle">Text</span>
+            <textarea [cols]="85"
+                      [rows]="5"
+                      autoResize="autoResize"
+                      formControlName="text"
+                      pInputTextarea
+                      placeholder="Enter ad text"
+                      class="emoji-input"
+                      class="setup-box__item_control"></textarea>
+            <app-emoji [control]="formCreative.get('text')"></app-emoji>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,13 @@
+<p-dialog [(visible)]="isErrorDisplay"
+          [modal]="true"
+          [responsive]="true"
+          [width]="350"
+          [maximizable]="true"
+          [baseZIndex]="20000"
+          [closeOnEscape]="false"
+          [blockScroll]="true">
+  <p class="error-title">Sorry, something went wrong.</p>
+  <p>{{errorResponse?.error?.error?.message || errorResponse?.error}}</p>
+  <p class="error-title">We will fix it as soon as possible</p>
+  <a (click)="goHome()">{{isGoToLanding ? 'Go to landing' : 'Go to templates'}}</a>
+</p-dialog>

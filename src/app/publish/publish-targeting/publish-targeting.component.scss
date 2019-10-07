@@ -1,0 +1,82 @@
+.setup-box__common-age-gender {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.setup-box__item-inline {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+app-detailed-targeting::ng-deep {
+  form {
+    app-detailed-targeting-legend legend {
+      color: #000000;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    app-detailed-input .app-detailed-input {
+      border-color: #ebebeb;
+      background-color: #ffffff;
+    }
+  }
+}
+
+.age-label {
+  margin-right: 10px;
+}
+
+.age-label.max {
+  margin-left: 10px;
+}
+
+app-geo::ng-deep {
+  app-geo-mode::ng-deep {
+    .app-geo-pin__icon svg {
+      fill: #7d25fb !important;
+    }
+  }
+}
+
+app-geo::ng-deep {
+  app-geo-search::ng-deep {
+    app-geo-map {
+      display: none;
+    }
+
+    .app-geo-search {
+      border-color: #ebebeb;
+      background-color: #ffffff;
+    }
+  }
+}
+
+.age-dropdown ::ng-deep {
+  .ui-dropdown-panel,
+  .ui-dropdown-label {
+    width: 64px !important;
+    min-width: auto !important;
+  }
+
+  .ui-widget {
+    width: 68px !important;
+    min-width: auto !important;
+  }
+
+  .ui-dropdown-item {
+    width: 50px;
+  }
+
+  .ui-dropdown-panel .ui-dropdown-items-wrapper {
+    overflow-x: hidden;
+  }
+}
+
+.gender * {
+  height: 35px;
+  display: flex;
+  align-items: center;
+}

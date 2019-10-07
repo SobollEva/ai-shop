@@ -1,0 +1,418 @@
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1;
+}
+
+.content__product_title-input,
+.content__product_title,
+.content__product_price-input,
+.content__product_price,
+.content__last_sale-message-input,
+.content__last_sale-message {
+  font-weight: bold;
+}
+
+.content__last_sale-header-input,
+.content__last_sale-header {
+  font-weight: 900;
+}
+
+//add class center
+.content__last_shop-title,
+.content__last_shop-title-input,
+.content__last_sale-header,
+.content__last_sale-header-input,
+.content__last_sale-message-input,
+.content__last_sale-message,
+.content__product_price-input,
+.content__product_price {
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.content__last {
+  height: 100%;
+}
+
+.content__product {
+  position: absolute;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.content__product_price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+}
+
+.price_border-right,
+.price_border-top,
+.price_border-left,
+.price_border-bottom,
+.content__product_price-info {
+  position: absolute;
+}
+
+.content__product_price-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.content__product_price-input {
+  font-size: 31px;
+  height: 55%;
+  width: 94%;
+}
+
+.content__product_price {
+  font-size: 10px;
+}
+
+.content__product_title {
+  overflow: hidden;
+}
+
+.price_border-right {
+  height: 50%;
+  top: 0;
+  right: 0;
+}
+
+.price_border-top {
+  width: 100%;
+  top: 0;
+}
+
+.price_border-left {
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.price_border-bottom {
+  width: 100%;
+  bottom: 0;
+}
+
+.content__last {
+  width: 88%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content__last .edit-overlay {
+  padding: 0;
+}
+
+.content__last_sale-message-input {
+  font-size: 38px;
+}
+
+.content__last_sale-message {
+  font-size: 14px;
+}
+
+.content__last_sale-header-input {
+  font-size: 72px;
+}
+
+.content__last_sale-header {
+  font-size: 30px;
+  margin: 3% 0;
+}
+
+.content__last_shop-title {
+  height: 20%;
+  width: 90%;
+}
+
+.content__percents_size-l,
+.content__percents_size-s {
+  position: absolute;
+  font-weight: 900;
+}
+
+.preview {
+  .content__percents_size-l {
+    font-size: 54em;
+  }
+
+  .content__percents_size-s {
+    font-size: 31em;
+  }
+  .price_border-right,
+  .price_border-left {
+    width: 4px;
+  }
+
+  .price_border-top,
+  .price_border-bottom {
+    height: 4px;
+  }
+}
+
+.sketch-box {
+  .content__percents_size-l {
+    font-size: 21em;
+  }
+
+  .content__percents_size-s {
+    font-size: 12em;
+  }
+
+  .price_border-right,
+  .price_border-left {
+    width: 2.5%;
+  }
+
+}
+
+.horizontal {
+  .content__percents_size-l {
+    top: -33%;
+    left: -26%;
+  }
+
+  .content__percents_size-s {
+    top: -67%;
+    right: -21%;
+    transform: rotate(4deg) scale(-1);
+  }
+
+  .content__product {
+    width: 88%;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5%;
+  }
+
+  .content__product-left {
+    width: 50%;
+    height: 100%;
+    padding: 3% 0;
+  }
+  .content__product_title {
+    height: 55%;
+    margin-bottom: 5%;
+    overflow: hidden;
+  }
+
+  .content__product_img {
+    width: 50%;
+    height: 100%;
+  }
+
+  .content__product_price {
+    width: 80%;
+    height: 43%;
+  }
+}
+
+.horizontal.sketch-box {
+  .price_border-top,
+  .price_border-bottom {
+    height: 6%;
+  }
+}
+
+.vertical,
+.square {
+  .content__product {
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .content__product_price {
+    width: 100%;
+  }
+
+  .content__last_shop-title,
+  .content__last_sale-message {
+    width: 100%;
+  }
+}
+
+.vertical.sketch-box,
+.square.sketch-box {
+  .price_border-top,
+  .price_border-bottom {
+    height: 10%;
+  }
+}
+
+.square {
+  .content__percents_size-l,
+  .content__percents_size-s {
+    font-family: 'Roboto', sans-serif !important;
+  }
+
+  .content__product {
+    height: 88%;
+    padding: 1% 16%;
+  }
+
+  .content__product_img {
+    height: 55%;
+  }
+
+  .content__product_price {
+    margin: 4% 0;
+    height: 15%;
+  }
+
+  .content__product_title {
+    height: 23%;
+    width: 100%;
+  }
+
+  .content__percents_size-l {
+    top: -55%;
+    left: -41%;
+  }
+
+  .content__percents_size-s {
+    top: -36%;
+    left: 64%;
+  }
+
+  .content__last_sale-message-input {
+    font-size: 34px;
+  }
+
+  .content__last_sale-header-input {
+    font-size: 43px;
+  }
+
+  .content__last_sale-header {
+    font-size: 18px;
+  }
+}
+
+.square.preview {
+  .content__percents_size-l {
+    font-size: 54em;
+  }
+
+  .content__percents_size-s {
+    font-size: 22em;
+  }
+
+  .content__product_price-input {
+    font-size: 28px;
+  }
+}
+
+.square.sketch-box {
+  .content__product_price-input {
+    font-size: 9px;
+  }
+  .content__percents_size-s {
+    font-size: 9em;
+  }
+
+}
+
+.vertical {
+  .content__percents_size-s {
+    right: -36%;
+    top: -18%;
+  }
+
+  .content__percents_size-l {
+    right: -37%;
+    bottom: -30%;
+  }
+
+  .content__product {
+    height: 94%;
+    padding: 19% 16% 8%;
+  }
+
+  .content__last_sale-header-input {
+    font-size: 39px;
+  }
+
+  .content__last_sale-message-input {
+    font-size: 26px;
+  }
+  .content__last_shop-title {
+    height: 13%;
+  }
+
+  .content__last_sale-message {
+    font-size: 10px;
+  }
+
+  .content__product_price {
+    margin: 25% 0;
+    height: 10%;
+  }
+
+  .content__product_title {
+    height: 20%;
+  }
+
+  .content__product_img {
+    height: 45%;
+    width: 100%;
+  }
+}
+
+.vertical.preview {
+  .content__percents_size-l {
+    font-size: 50em;
+  }
+
+  .content__product_price-input {
+    font-size: 22px;
+  }
+
+}
+
+.vertical.sketch-box {
+  .content__percents_size-l {
+    font-size: 19em;
+  }
+
+  .content__product_price {
+    font-size: 8px;
+  }
+
+  .content__last_sale-header {
+    font-size: 15px;
+  }
+}
+
+.st-valentine {
+  background-image: url("/assets/images/st-valentine/bg_valentine.png");
+}
+
+.st-valentine-animation {
+  background-image: url("/assets/images/st-valentine/bg_valentine.gif");
+}
+
+.st-valentine,
+.st-valentine-animation {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

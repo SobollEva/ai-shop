@@ -1,0 +1,20 @@
+p-dialog::ng-deep {
+  .ui-widget {
+    box-shadow: none;
+  }
+
+  .ui-widget-header {
+    display: none;
+  }
+}
+
+.error-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+a {
+  cursor: pointer;
+}

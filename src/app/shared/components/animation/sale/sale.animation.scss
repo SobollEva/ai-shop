@@ -1,0 +1,199 @@
+.content {
+  position: relative;
+}
+
+.poster {
+  .content__top_img-overlay {
+    transform: translateX(0%) scale(1);
+  }
+
+  .content__bottom_title {
+    transform: translateX(0%)
+  }
+
+  .content__bottom__product-info {
+    transform: translateX(0%)
+  }
+}
+
+.content__ribbon__last {
+  height: 100%;
+  width: 140%;
+  transform: skewY(-9deg) translateY(55%) translateX(-10%);
+  box-shadow: 0 9px 7px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 5;
+}
+
+.content__top__last_overlay {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.content__top_img-overlay {
+  transform: translateX(-120%) scale(1);
+}
+
+.content__bottom_title {
+  transform: translateX(-110%);
+}
+
+.content__bottom__product-info {
+  transform: translateX(-110%)
+}
+
+.content__top__last {
+  position: relative;
+  z-index: 9;
+  background-color: transparent;
+  transform: translateX(0);
+}
+
+.content__top__last_shop-title {
+  transform: scale(1);
+}
+
+.content__bottom__last {
+  transform: translateY(0%);
+  position: absolute;
+  z-index: 7;
+  bottom: 0;
+  width: 100%;
+}
+
+.content__top__last_sale-header {
+  transform: translateX(0%);
+}
+
+@keyframes bottomSMove {
+  0% {
+    transform: translateX(102%);
+  }
+  5% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes headerSMove {
+  0% {
+    transform: translateX(102%);
+  }
+  20%, 92% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes titleSMove {
+  0% {
+    transform: translateX(102%);
+  }
+  25%, 95% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes imgSMove {
+  0% {
+    transform: translateX(120%) scale(0.8);
+  }
+  23% {
+    transform: translateX(0) scale(0.8);
+  }
+  95% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+// last
+@keyframes ribbonSMove {
+  0% {
+    transform: skewY(-25deg) translateY(-135%) translateX(-10%);
+  }
+  20% {
+    transform: skewY(-13deg) translateY(90%) translateX(-10%);
+  }
+  30%, 100% {
+    transform: skewY(-10deg) translateY(55%) translateX(-10%);
+  }
+}
+
+@keyframes imgOverlayLastSMove {
+  0%, 30% {
+    opacity: 0;
+  }
+  50%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shopTitleSMove {
+  0%, 26% {
+    transform: scale(0)
+  }
+  50% {
+    transform: scale(0.5)
+  }
+  70%, 100% {
+    transform: scale(1.1)
+  }
+}
+
+@keyframes saleHeaderSMove {
+  0%, 26% {
+    transform: translateX(120%);
+  }
+  30% {
+    transform: translateX(-10%)
+  }
+  40%, 100% {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes bottomLastSMove {
+  0%, 30% {
+    transform: translateY(120%);
+  }
+  50%, 100% {
+    transform: translateY(0%)
+  }
+}
+
+.bottom-move {
+  animation: bottomSMove 15s ease-out infinite;
+}
+
+.header-move {
+  animation: headerSMove 3s ease-out infinite;
+}
+
+.title-move {
+  animation: titleSMove 3s ease-out infinite;
+}
+
+.img-move {
+  animation: imgSMove 3s ease-in-out infinite;
+}
+
+//---last slide
+.ribbon-move {
+  animation: ribbonSMove 3s ease-in-out;
+}
+
+.shop-title-move {
+  animation: shopTitleSMove 3s linear;
+}
+
+.sale-header-move {
+  animation: saleHeaderSMove 3s linear
+}
+
+.bottom-last-move {
+  animation: bottomLastSMove 3s linear
+}
+
+.img-overlay-move {
+  animation: imgOverlayLastSMove 3s linear
+}

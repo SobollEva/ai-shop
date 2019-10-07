@@ -1,0 +1,16 @@
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #7d25fb;
+  }
+  40% {
+    stroke: #5715b6;
+  }
+  66% {
+    stroke: #d8d8d8;
+  }
+  80%,
+  90% {
+    stroke: #5715b6;
+  }
+}

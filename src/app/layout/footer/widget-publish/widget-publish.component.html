@@ -1,0 +1,38 @@
+<div *ngIf="!isWidgetMini">
+    <div class="widget-header"
+         [ngClass]="{'error' : isErrorCreateCampaign}">
+        <span *ngIf="!isErrorCreateCampaign && !campaignHref">Publishing in the process</span>
+        <span *ngIf="!isErrorCreateCampaign && campaignHref">Publishing is completed</span>
+        <span *ngIf="isErrorCreateCampaign">Something was wrong</span>
+        <div class="widget-header__group-button">
+            <p-button label="Cancel"
+                                  class="widget-button-close"
+                                  (click)="setWidgetClose()"></p-button>
+<!--            <div class="widget-toggle widget-remove" (click)="setWidgetHide()">x</div>-->
+            <div class="widget-toggle widget-turn-down" (click)="setWidgetForm()">&#8250;</div>
+        </div>
+    </div>
+    <div class="widget-content">
+        Campaign name: {{widgetSetup.campaign.campaigns[0].name || widgetSetup.campaign.campaigns[0].id}}
+        <p-progressBar [value]="valueProgressBar" [showValue]="false"
+                       [ngClass]="{'error' : isErrorCreateCampaign, 'success' : !isErrorCreateCampaign && valueProgressBar === 100}">
+        </p-progressBar>
+        <a *ngIf="!isErrorCreateCampaign && campaignHref" [href]="campaignHref" target="_blank"
+           class="widget-content__link">Go to Ads Manager</a>
+        <div *ngIf="isErrorCreateCampaign">
+            <div class="widget-content__error-message">{{errorCreateCampaignMessage}}</div>
+            <div (click)="errorCreateCampaign()" class="widget-content__link">Fix publish</div>
+        </div>
+    </div>
+</div>
+
+<div class="widget-mini"
+     *ngIf="isWidgetMini">
+    <p-progressBar [value]="valueProgressBar" [showValue]="false"
+                   [ngClass]="{'error' : isErrorCreateCampaign, 'success' : !isErrorCreateCampaign && valueProgressBar === 100}"
+                   class="widget-mini__progress-bar">
+    </p-progressBar>
+    <div class="widget-toggle widget-turn-up" (click)="setWidgetForm()">&#8250;</div>
+</div>
+
+

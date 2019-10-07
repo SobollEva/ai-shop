@@ -1,0 +1,12 @@
+body .ui-dataview .ui-dataview-header,
+body .ui-dataview .ui-dataview-content,
+body .ui-dataview .ui-dataview-footer {
+  padding: 0 !important;
+  border: none !important;
+  background-color: #ffffff !important;
+}
+
+.ui-dataview-content .draft-list__row:first-child {
+  padding-top: 0;
+}
+

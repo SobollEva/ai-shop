@@ -1,0 +1,26 @@
+body p-paginator {
+  .ui-paginator {
+    background-color: transparent;
+    border: 1px solid transparent;
+
+    &-page:focus,
+    &-page:active {
+      outline: none;
+    }
+
+    &-pages .ui-paginator-page.ui-state-active {
+      background-color: #7d25fb !important;
+    }
+
+    &-bottom {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+
+body p-paginator.paginator-disabled {
+  .ui-paginator {
+    pointer-events: none;
+  }
+}

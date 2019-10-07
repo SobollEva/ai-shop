@@ -1,0 +1,251 @@
+* {
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.content__bottom_title,
+.content__bottom_title-input,
+.content__bottom__product-info_title,
+.content__bottom__product-info_title-input,
+.content__top__last_shop-title,
+.content__top__last_shop-title-input,
+.content__bottom__last__sale-info,
+.content__bottom__last__sale-info_percent-input,
+.content__bottom__last__sale-info_title-input,
+.content__bottom__last__sale-message,
+.content__bottom__last__sale-message-input {
+  font-weight: bold;
+}
+
+.content__top__last_sale-header,
+.content__top__last_sale-header-input {
+  font-family: 'Bebas Neue Light', sans-serif;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content__top {
+  height: 62%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.content__top_img-overlay {
+  height: 95%;
+  width: 71%;
+  padding-top: 5px;
+}
+
+.content__bottom {
+  height: 38%;
+}
+
+.content__top__last_sale-header-input {
+  font-size: 35px;
+  width: 100%;
+  text-align: center;
+}
+
+.content__bottom_title-input {
+  font-size: 40px;
+}
+
+.content__bottom_title {
+  font-size: 11px;
+}
+
+.content__bottom__product-info_price {
+  padding: 10px 0;
+  border-radius: 3px;
+  width: 49%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// TODO: text-align: center; - common class
+.content__bottom__product-info_price-input {
+  font-size: 28px;
+  width: 86%;
+  text-align: center;
+}
+
+.content__bottom__product-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4%;
+  height: 54%;
+}
+
+.content__bottom__product-info_title {
+  width: 50%;
+  overflow: hidden;
+  line-height: 1;
+  padding-top: 1%;
+}
+
+.content__top__last {
+  height: 64%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.content__top__last_shop-title {
+  text-align: center;
+  width: 88%;
+  word-wrap: break-word;
+  line-height: 1;
+}
+
+.content__bottom__last {
+  height: 36%;
+  display: flex;
+  justify-content: space-between;;
+  align-content: center;
+}
+
+.content__top__last__triangle {
+  height: 22%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.content__top__last__triangle {
+  border-right-style: solid;
+  border-bottom-style: solid;
+}
+
+.content__bottom__last__sale-info {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  margin-top: 25px;
+}
+
+.content__bottom__last__sale-info_percent-input,
+.content__bottom__last__sale-info_title-input {
+  text-align: center;
+}
+
+.content__bottom__last__sale-message {
+  width: 63%;
+}
+
+.content__top__last_sale-header {
+  width: 80%;
+  border-radius: 3px;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  box-shadow: 0 9px 15px 1px rgba(0, 0, 0, 0.5);
+}
+
+.content__top__last_overlay {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.content__bottom__product-info_title-input {
+  font-size: 28px;
+  width: 100%;
+}
+
+.content__bottom__last__sale-info_percent-input {
+  font-size: 52px;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.content__bottom__last__sale-info_title-input {
+  font-size: 22px;
+  height: 45%;
+  border-radius: 0 0 8px 8px !important;
+}
+
+.content__top__last_shop-title-input {
+  text-align: center;
+}
+
+// TODO: content__bottom__last rewrite by grid
+.preview {
+  .content__bottom,
+  .content__bottom__last {
+    padding: 15px;
+  }
+
+  .content__top__last__triangle {
+    border-top: 32px solid transparent;
+    border-left: 178px solid transparent;
+    border-right-width: 178px;
+    border-bottom-width: 32px;
+  }
+
+  .content__bottom__last__sale-info {
+    border-radius: 3px;
+    margin-top: 25px;
+  }
+
+  .content__bottom__last__sale-message {
+    margin-top: 25px;
+  }
+}
+
+.sketch-box {
+  .content__bottom,
+  .content__bottom__last {
+    padding: 4% 7%;
+  }
+
+  .content__bottom__product-info_price {
+    border-radius: 2px;
+    font-size: 10px;
+    padding: 5px 0;
+  }
+
+  .content__top__last__triangle {
+    border-top: 10px solid transparent;
+    border-left: 59px solid transparent;
+    border-right-width: 59px;
+    border-bottom-width: 10px;
+  }
+
+  .content__bottom__last__sale-info {
+    border-radius: 2px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .content__bottom__last__sale-message {
+    overflow: hidden;
+    margin-top: 10px;
+    line-height: 1.1;
+  }
+
+  .content__top__last_sale-header {
+    font-size: 9px;
+    padding: 2px 0;
+    box-shadow: 0 5px 4px 1px rgba(0, 0, 0, 0.5);
+  }
+
+  .content__bottom__last__sale-info_percent {
+    padding-top: 2px;
+    font-size: 16px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .content__bottom__last__sale-info_title {
+    padding-bottom: 2px;
+    font-size: 7px;
+    border-radius: 0 0 2px 2px;
+  }
+}
+

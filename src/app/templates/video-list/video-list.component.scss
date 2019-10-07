@@ -1,0 +1,50 @@
+.video-list {
+  margin-bottom: 50px;
+}
+
+.video-list__row {
+  padding: 40px 0;
+  border-bottom: 1px solid #ebebeb;
+  display: flex;
+  align-items: center;
+}
+
+.video-title {
+  padding-left: 25px;
+}
+
+video {
+  margin-bottom: 5px;
+  display: block;
+}
+
+i.pi-times-circle {
+  cursor: pointer;
+}
+
+.render-status {
+  padding-right: 5px;
+}
+
+.pi.pi-cloud-download,
+.fas.fa-sync {
+  color: #7e57c2 !important;
+  padding-left: 0 !important;
+}
+
+.pi.pi-cloud-download {
+  font-size: 32px !important;
+}
+
+.fas.fa-sync {
+  font-size: 20px !important;
+}
+
+.video-list .card-list-item__view {
+  display: flex;
+  justify-content: center;
+}
+
+.video-list .buttons {
+  justify-content: space-evenly;
+}

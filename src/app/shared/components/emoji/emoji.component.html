@@ -1,0 +1,11 @@
+<div class="emoji-wrapper">
+  <ngx-emoji [emoji]="emojiForHandler"
+             [size]="emojiSizeForHandler"></ngx-emoji>
+  <emoji-mart class="emoji-mart"
+              [title]="title"
+              [ngStyle]="{'display': isEmojiMartShown ? 'inline-block' : 'none'}"
+              [emoji]="emoji"
+              [emojiSize]="emojiSize"
+              [sheetSize]="sheetSize"
+              (emojiSelect)="addEmoji($event)"></emoji-mart>
+</div>

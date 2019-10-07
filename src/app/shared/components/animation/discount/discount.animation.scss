@@ -1,0 +1,637 @@
+.plane {
+  height: 100%;
+  width: 130%;
+  transform: scale(0);
+  position: absolute;
+  z-index: 5;
+}
+
+.plane__position {
+  position: relative;
+  height: 100%;
+}
+
+.plane__triangle,
+.plane__trapezium {
+  position: absolute;
+  height: 100%;
+  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.plane__triangle {
+  width: 85%;
+}
+
+.plane__trapezium {
+  width: 70%;
+}
+
+.content__slide {
+  z-index: 4;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.content__slide-position {
+  position: relative;
+  height: 100%;
+}
+
+.content__img {
+  transform: scale(1);
+}
+
+.content__trapezium {
+  height: 100%;
+  transform: skewX(-7deg);
+  position: absolute;
+}
+
+.content__product-info {
+  overflow: hidden;
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+}
+
+.sketch-box__item_last .content {
+  position: relative;
+  height: 100%;
+}
+
+.content__last__line {
+  position: absolute;
+  z-index: 5;
+  width: 125%;
+  height: 192%;
+  transform: translateY(-22%) translateX(-12%) rotate(-31deg);
+  overflow: hidden;
+}
+
+.content__last__info_shop-title {
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+.content__last__line_bottom {
+  height: 3px;
+  background-color: #bf341d;
+}
+
+.content__last__line_top {
+  height: 4px;
+  box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.content__last {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.content__last__info {
+  transform: rotate(31deg);
+}
+
+.content__last__info_shop-title {
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0.5px 2px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 13px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+  height: 70%;
+  overflow: hidden;
+  padding: 5px;
+  transform: scale(1);
+}
+
+.content__last__info_sale-message {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 12%;
+  transform: translateY(0%);
+}
+
+.content__title {
+  padding-left: 3%;
+  transform: translateY(0%);
+}
+
+.content__last__product_slide {
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.content__last__info_sale-message {
+  margin-top: 6%;
+}
+
+.content__left {
+  .content__slide {
+    transform: translateX(0%)
+  }
+
+  .plane {
+    transform: translateX(110%);
+  }
+
+  .plane__position {
+    .plane__triangle {
+      left: 11%;
+      transform: skewX(3deg);
+    }
+    .plane__trapezium {
+      transform: skewX(-7deg);
+    }
+  }
+}
+
+.content__right {
+  .plane {
+    transform: translateX(-110%);
+  }
+
+  .plane__position {
+    .plane__triangle {
+      right: 11%;
+      transform: skewX(-3deg);
+    }
+    .plane__trapezium {
+      transform: skewX(7deg);
+    }
+  }
+}
+
+.content__ribbon {
+  position: absolute;
+  z-index: 8;
+}
+
+.title-ribbon {
+  .title-ribbon-out {
+    transform: translateX(0%);
+  }
+
+  .title-ribbon-in {
+    transform: translateX(0%);
+  }
+}
+
+.content__right {
+  .content__slide {
+    transform: translateX(-110%)
+  }
+
+  .title-ribbon-in {
+    transform: scaleX(-1) translateX(0%);
+  }
+}
+
+/*--------------end ribbon-------------------*/
+.horizontal {
+  .content__last__info {
+    width: 48%;
+    height: 42%;
+  }
+}
+
+//-------------------------square----------------------
+.square {
+  .content__last__line {
+    width: 140%;
+    height: 180%;
+  }
+
+  .content__last__info {
+    width: 57%;
+    height: 48%;
+    margin-right: 10%;
+  }
+
+  .content__right {
+    .trapezium__sale-header {
+      text-align: end;
+    }
+  }
+}
+
+//-----------------------end square---------------------
+//---------------vertical-------------------------
+.vertical {
+  .content__slide-position {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+  }
+
+  .content__last__info {
+    width: 45%;
+    height: 55%;
+    margin-right: 8%;
+    transform: rotate(41deg);
+  }
+
+  .content__title {
+    font-size: 6px;
+    transform: scale(1);
+  }
+
+  .plane {
+    transform: translateY(-135%);
+  }
+  .plane__trapezium {
+    height: 60%;
+    transform: skewY(5deg);
+    top: 20%;
+    width: 100%;
+  }
+
+  .plane__position .plane__triangle:first-child {
+    transform: skewY(-5deg);
+    height: 25%;
+  }
+
+  .plane__position .plane__triangle:last-child {
+    transform: skewY(-10deg);
+    height: 55%;
+    top: 72%;
+  }
+  .content__last__line {
+    width: 185%;
+    height: 123%;
+    transform: translateY(-11%) translateX(-22%) rotate(-41deg);
+  }
+  .content__left {
+    .content__trapezium {
+      transform: skewY(7deg);
+      box-shadow: -2px 0 14px #968f8f;
+    }
+
+    .trapezium__sale-header {
+      transform: skewY(-7deg) scale(1);
+    }
+  }
+
+  .content__right {
+    .content__ribbon {
+      left: 22%;
+    }
+
+    .content__trapezium {
+      transform: skewY(-7deg);
+      box-shadow: 2px 0 14px #968f8f;
+      right: 0;
+    }
+
+    .trapezium__sale-header {
+      transform: skewY(7deg) scale(1);
+    }
+  }
+}
+
+//--------------end vertical--------------------
+
+@keyframes planeLeftDMove {
+  0%, 70% {
+    transform: translateX(-110%) scale(1);
+  }
+  100% {
+    transform: translateX(85%) scale(1);
+  }
+}
+
+@keyframes planeRightDMove {
+  0%, 70% {
+    transform: translateX(85%) scale(1);
+  }
+  100% {
+    transform: translateX(-110%) scale(1);
+  }
+}
+
+@keyframes planeVerticalDMove {
+  0%, 70% {
+    transform: translateY(120%);
+  }
+  100% {
+    transform: translateY(-135%);
+  }
+}
+
+@keyframes contentLeftDMove {
+  0% {
+    transform: translateX(-110%)
+  }
+  10% {
+    transform: translateX(0%)
+  }
+  72% {
+    transform: translateX(0%)
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+@keyframes contentLeftNotDMove {
+  0% {
+    transform: translateX(-110%)
+  }
+  10% {
+    transform: translateX(0%)
+  }
+  72% {
+    transform: translateX(0%)
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes contentRightDMove {
+  0% {
+    transform: translateX(110%);
+  }
+  10% {
+    transform: translateX(0%)
+  }
+  72% {
+    transform: translateX(0%)
+  }
+  100% {
+    transform: translateX(-110%);
+  }
+}
+
+@keyframes imgDMove {
+  9% {
+    transform: scale(0.7);
+  }
+  72% {
+    transform: scale(1)
+  }
+}
+
+@keyframes titleProductDMove {
+  0%, 15% {
+    transform: translateY(200%);
+  }
+  30% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes titleProductVerticalDMove {
+  0%, 15% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1);
+  }
+}
+
+@keyframes saleHeaderDMove {
+  0%, 15% {
+    transform: skewX(7deg) scale(0)
+  }
+  65% {
+    transform: skewX(7deg) scale(1);
+  }
+}
+
+@keyframes saleHeaderRightVerticalDMove {
+  0%, 15% {
+    transform: skewY(7deg) scale(0)
+  }
+  65% {
+    transform: skewY(7deg) scale(1);
+  }
+}
+
+@keyframes saleHeaderLeftVerticalDMove {
+  0%, 15% {
+    transform: skewY(-7deg) scale(0)
+  }
+  65% {
+    transform: skewY(-7deg) scale(1);
+  }
+}
+
+@keyframes ribbonOutDMove {
+  0%, 18% {
+    transform: scale(0);
+  }
+  23% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ribbonInLeftDMove {
+  0%, 24% {
+    transform: scaleX(0);
+  }
+  29% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ribbonInRightDMove {
+  0%, 24% {
+    transform: scaleX(0);
+  }
+  29% {
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes ribbonTragon3DMove {
+  0%, 28% {
+    transform: scale(0);
+  }
+  33% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ribbonTragon2DMove {
+  0%, 20% {
+    transform: scale(0);
+  }
+  21% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ribbonTragon1DMove {
+  0%, 15% {
+    transform: rotate(19deg) scale(0);
+  }
+  20% {
+    transform: rotate(19deg) scale(1);
+  }
+}
+
+@keyframes openLastSlideLineDMove {
+  0%, 20% {
+    transform: scale(1);
+  }
+  21% {
+    transform: scale(0);
+  }
+}
+
+@keyframes openLastSlideDMove {
+  0% {
+    height: 0;
+  }
+  20% {
+    height: 100%;
+  }
+}
+
+@keyframes lastSlideDMove {
+  0% {
+    transform: translateY(17%) translateX(10%) rotate(-31deg);
+  }
+  20% {
+    transform: translateY(-22%) translateX(-12%) rotate(-31deg);
+  }
+}
+
+@keyframes lastSlideVerticalDMove {
+  0% {
+    transform: translateY(33%) translateX(0%) rotate(-41deg);
+  }
+  20% {
+    transform: translateY(-11%) translateX(-22%) rotate(-41deg);
+  }
+}
+
+@keyframes lastSlideShopTitleDMove {
+  18% {
+    transform: scale(1.3);
+  }
+  45% {
+    transform: scale(1);
+  }
+}
+
+//TODO: rewrite 700%
+@keyframes lastSlideShopMessageDMove {
+  0%, 45% {
+    transform: translateY(700%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+}
+
+.content-left-move {
+  animation: contentLeftDMove 3.7s ease;
+}
+
+.content-left-not-move {
+  animation: contentLeftNotDMove 3.7s ease;
+}
+
+.plane-left-move {
+  animation: planeLeftDMove 3.5s ease;
+}
+
+.content-right-move {
+  animation: contentRightDMove 3.5s ease;
+}
+
+.plane-right-move {
+  animation: planeRightDMove 3.5s ease;
+}
+
+.img-move {
+  animation: imgDMove 3.5s ease;
+}
+
+.img-vertical-move {
+  animation: imgProductVerticalDMove 3.5s ease;
+}
+
+.title-move {
+  animation: titleProductDMove 3.5s ease;
+}
+
+.title-vertical-move {
+  animation: titleProductVerticalDMove 3.5s ease infinite;
+}
+
+.sale-header-move {
+  animation: saleHeaderDMove 3.5s ease;
+}
+
+.sale-header-left-vertical-move {
+  animation: saleHeaderLeftVerticalDMove 3.5s ease;
+}
+
+.sale-header-right-vertical-move {
+  animation: saleHeaderRightVerticalDMove 3.5s ease;
+}
+
+.ribbon-out-move {
+  animation: ribbonOutDMove 3.5s ease-out infinite;
+}
+
+.ribbon-in-left-move {
+  animation: ribbonInLeftDMove 3.5s ease-out infinite;
+}
+
+.ribbon-in-right-move {
+  animation: ribbonInRightDMove 3.5s ease-out infinite;
+}
+
+.ribbon-tragon3-move {
+  animation: ribbonTragon3DMove 3.5s ease-out infinite;
+}
+
+.ribbon-tragon2-move {
+  animation: ribbonTragon2DMove 3.5s ease-out infinite;
+}
+
+.ribbon-tragon1-move {
+  animation: ribbonTragon1DMove 3.5s ease-out infinite;
+}
+
+// TODO: rewritte
+.last-slide-open {
+  animation: openLastSlideDMove 3.5s linear;
+}
+
+.last-slide-open-line {
+  animation: openLastSlideLineDMove 3.5s linear;
+}
+
+.last-slide {
+  animation: lastSlideDMove 3.5s linear;
+}
+
+.last-slide-vertical {
+  animation: lastSlideVerticalDMove 3.5s linear;
+}
+
+.last-slide-shop-title {
+  animation: lastSlideShopTitleDMove 3.5s ease-out;
+}
+
+.last-slide-shop-message {
+  animation: lastSlideShopMessageDMove 3.5s ease-out;
+}
+
+.plane-vertical-move {
+  animation: planeVerticalDMove 3.8s ease infinite;
+}

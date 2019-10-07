@@ -1,0 +1,51 @@
+<div class="video-list">
+    <div *ngIf="!isRealoadVideotList; else progressSpinner">
+        <div *ngIf="videoTotalCount; else emptyVideo">
+            <div class="card-list__body">
+                <div *ngFor="let video of videoList; let i = index" class="card-list-item card">
+                    <div class="card-list-item__view">
+                        <video preload="metadata" controls height="135" [poster]="video.thumbnail">
+                            <source [src]="video.result" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                            Sorry, your browser doesn't support embedded videos.
+                        </video>
+                    </div>
+                    <div>
+                        <span class="render-status">status: {{video.status}} </span>
+                    </div>
+                    <div class="card-list-item__date">Modified: {{video.created_at | date:'medium'}}</div>
+
+                    <div class="buttons">
+                        <a [href]="downloadVideo(video.result)" download *ngIf="video.status === 'complete'"
+                           (click)="clickDownloadVideo()"
+                           class="icon"
+                           pTooltip="Download" tooltipPosition="bottom">
+                            <i class="pi pi-cloud-download"></i>
+                        </a>
+                        <div *ngIf="video.status === 'process'"
+                             (click)="refreshVideo(video.id, i)"
+                             class="icon"
+                             pTooltip="Refresh status" tooltipPosition="bottom">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <div class="icon icon-delete"
+                             (click)="removeVideo(video)"
+                             pTooltip="Delete" tooltipPosition="bottom"></div>
+                        <p-button *ngIf="video.status === 'complete'" label="PUBLISH" (click)="publishVideo(video)"
+                                  class="button_color_violet"></p-button>
+                    </div>
+                </div>
+            </div>
+            <p-paginator [rows]="videoRow" [totalRecords]="videoTotalCount"
+                         (onPageChange)="chooseVideoPage($event.page+1)" [alwaysShow]="false"
+                         [ngClass]="{'paginator-disabled': isRealoadVideotList}"></p-paginator>
+        </div>
+    </div>
+</div>
+<ng-template #emptyVideo>
+    <app-empty-view></app-empty-view>
+</ng-template>
+<ng-template #progressSpinner>
+    <div class="progress-spinner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-template>

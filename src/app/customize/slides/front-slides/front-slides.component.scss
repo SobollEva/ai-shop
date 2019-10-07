@@ -1,0 +1,89 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content__top_title-title-input,
+.content__top_title-discount-input {
+  text-align: center;
+  width: 100%;
+}
+
+.content__top_title-discount,
+.content__top_title-discount-input {
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative
+}
+
+.content_background {
+  height: 100%;
+}
+
+.preview .content_background,
+.slide .content_background {
+  transform: rotate(-4deg) scale(1.15)
+}
+
+.content__bottom {
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.content__top_bg,
+.content__top_title {
+  width: 100%;
+  height: 27%;
+  position: absolute;
+  top: 58%;
+}
+
+// TODO: delete this selector
+.content__top_bg {
+  opacity: 0.4;
+}
+
+.content__top_title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content__top_title-title {
+  overflow: hidden;
+  width: 100%;
+  height: 45%;
+  text-align: center;
+}
+
+.content__bottom__swipe {
+  display: inline-block;
+  transform: scale(2.5, 1);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content__top_title-discount-input {
+  font-size: 28px;
+}
+
+.preview .content__bottom__swipe {
+  font-size: 48px;
+}
+
+.sketch-box {
+  .content__top_title-discount {
+    font-size: 10px;
+  }
+
+  .content__bottom__swipe {
+    font-size: 22px;
+  }
+}

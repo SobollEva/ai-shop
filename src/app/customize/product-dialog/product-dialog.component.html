@@ -1,0 +1,50 @@
+<p-dialog [(visible)]="isShowProducts" [modal]="true"
+          [responsive]="true" [width]="800" [minWidth]="500" [dismissableMask]="true" [positionTop]="20"
+          [maximizable]="true" [baseZIndex]="10000" [blockScroll]="true"
+          class="product-list-dialog"
+          *ngIf="isShowProducts">
+  <p-dataView #dvProduct [value]="productList" [paginator]="false"
+              filterBy="title" [loading]="isProductsLoading" emptyMessage="No any products">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="ui-g">
+          <div class="ui-g-8">
+            <p class="product-list-dialog_title">Products</p>
+          </div>
+          <div class="ui-g-4 filter-container">
+            <input type="text" pInputText placeholder="Search by title"
+                   (keyup.enter)="searchProduct($event.target.value)" #search
+                   class="product-list-dialog__search-input">
+            <span class="product-list-dialog__search-icon"
+                  (click)="searchProduct(search.value)">
+                <i class="pi pi-search"></i>
+              </span>
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <ng-template let-product pTemplate="listItem">
+      <div class="ui-grid">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-3 product-list-dialog__image-carousel">
+            <p-carousel [value]="product?.images" [circular]="circular"
+                        [ngClass]="{'header-hide': product.images.length === 1}">
+              <ng-template let-imageUrl pTemplate="item">
+                <img src="{{imageUrl}}" height="75" (click)="addProductToAd(product, imageUrl)"
+                     class="product-list-dialog__image-carousel_item">
+              </ng-template>
+            </p-carousel>
+          </div>
+          <div class="ui-g-offset-1 ui-grid-col-5 product-list-dialog__title">
+            {{product.title}}
+          </div>
+          <div class="ui-g-offset-1 ui-grid-col-2 product-list-dialog__price">
+            {{product.price}}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+  <p-paginator [rows]="productRow" [totalRecords]="countProduct" *ngIf="productList?.length && countProduct > productRow"
+               (onPageChange)="chooseProductPage($event.page+1,search.value)"></p-paginator>
+</p-dialog>

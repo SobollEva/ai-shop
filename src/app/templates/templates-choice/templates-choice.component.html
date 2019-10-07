@@ -1,0 +1,114 @@
+<div *ngIf="!isEditFormat && !isChooseTemplate">
+    <h2 class="choice-title" [ngClass]="{'choice-title-empty-view':emptyView}">Create video</h2>
+    <p [hidden]="!emptyView" class="empty-view-title">Let’s start to create your first video in the best way for
+        you!</p>
+    <div class="choice-wrapper">
+        <div class="choice-box card">
+            <div class="choice-box__mark mark-pen"></div>
+            <h3 class="choice-box__title">Your own design</h3>
+            <p class="choice-box__text">Don't limit your creativity! Create your own personalized templates</p>
+            <p-button
+                    class="choice-box__button button_color_light-violet"
+                    (click)="goToEditorFormat()"
+                    label="Go to editor">
+            </p-button>
+        </div>
+        <div class="choice-box card">
+            <div class="choice-box__mark mark-tick"></div>
+            <h3 class="choice-box__title">Use templates</h3>
+            <p class="choice-box__text">Hey! We prepared pre-designed templates for you! Just choose one of them and
+                customize</p>
+            <p-button
+                    class="choice-box__button button_color_light-violet"
+                    (click)="goToTemplateFormat()"
+                    label="Go to templates">
+            </p-button>
+        </div>
+    </div>
+</div>
+<div *ngIf="isEditFormat">
+    <h2 class="choice-title">Choose format of your ad</h2>
+    <p-tabView class="choice">
+        <p-tabPanel header="Format">
+            <div *ngIf="!isDraftCreate; else progressSpinner" class="choice-wrapper">
+                <div class="choice-box editor card"
+                     (click)="chooseEditorFormat('vertical')">
+                    <div class="editor-format vertical"></div>
+                    <p class="editor-format-title">Vertical</p>
+                </div>
+                <div class="choice-box editor card"
+                     (click)="chooseEditorFormat('horizontal')">
+                    <div class="editor-format horizontal"></div>
+                    <p class="editor-format-title">Horizontal</p>
+                </div>
+                <div class="choice-box editor card"
+                     (click)="chooseEditorFormat('square')">
+                    <div class="editor-format"></div>
+                    <p class="editor-format-title">Square</p>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+    <div class="template-list_close" *ngIf="!isDraftCreate">
+        <p-button icon="pi pi-times"
+                  iconPos="left"
+                  label="Close"
+                  (click)="closePanel('editor')"
+                  class="button_color_violet"></p-button>
+    </div>
+</div>
+
+<div *ngIf="isChooseTemplate">
+    <h2 class="choice-title">Choose template of your ad</h2>
+    <p-tabView class="choice">
+        <p-tabPanel *ngFor="let group of groupList; let i = index" [selected]="i == 0">
+            <ng-template pTemplate="header">
+                <div class="template-header" (click)="setTemplatesSet(group.toLowerCase())">{{group}}</div>
+            </ng-template>
+            <div class="ui-grid editor-templates">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-12">
+                        <p-carousel [value]="templateSetList" circular="circular" numVisible="4">
+                            <ng-template let-template pTemplate="item" let-i = index>
+                                <div class="choice-box card template">
+                                    <div class="template__view">
+                                        <app-ribbon [title]="'New'" *ngIf="showRibbon(template)"></app-ribbon>
+                                        <div class="wrapper-animation-play">
+                                            <div class="play-animation"
+                                                 (click)="showTemplatePreview(template)">
+                                                <span>&#9658;</span>
+                                            </div>
+                                        </div>
+                                        <img class="template__view-img"
+                                             [src]="template.preview" height="100%"/>
+                                    </div>
+                                    <p class="template__title">{{template.title}}</p>
+                                    <div class="template__button-menu">
+                                        <p-button
+                                                [icon]="isTemplateEditorCreate && template.id === currentTemplateId ? 'pi pi-spin pi-spinner' : ''"
+                                                iconPos="right"
+                                                label="CHOOSE"
+                                                (click)="templateEditor(template.id)"
+                                                class="button_width_l template__button button_color_light-violet"></p-button>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-carousel>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+    <div class="template-list_close">
+        <p-button icon="pi pi-times"
+                  iconPos="left"
+                  label="Close"
+                  (click)="closePanel('templates')"
+                  class="button_color_violet"></p-button>
+    </div>
+</div>
+<ng-template #progressSpinner>
+    <div class="progress-spinner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-template>

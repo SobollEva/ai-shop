@@ -1,0 +1,93 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content__discount,
+.content__discount-input {
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content__top {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content__body {
+  height: 58%;
+  position: relative;
+}
+
+.content__bottom {
+  height: 22%;
+  text-align: center;
+}
+
+.content__top_title {
+  overflow: hidden;
+  width: 88%;
+  height: 65%;
+  text-align: center;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__top_title-input {
+  text-align: center;
+  line-height: 1.3;
+}
+
+.content__bottom__swipe {
+  display: inline-block;
+  transform: scale(2.5, 1);
+  margin-top: 14%;
+}
+
+.content__img {
+  height: 100%;
+}
+
+.content__discount {
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 70%;
+  padding: 2% 0;
+  bottom: -4%;
+}
+
+.content__discount-input {
+  font-size: 26px;
+  padding: 5px;
+  width: 95%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.preview {
+  .content__bottom__swipe {
+    font-size: 48px;
+  }
+}
+
+.sketch-box {
+  .content__bottom__swipe {
+    font-size: 22px;
+  }
+
+  .content__discount {
+    font-size: 8px;
+    padding: 8% 0;
+    height: 23%;
+  }
+}
+

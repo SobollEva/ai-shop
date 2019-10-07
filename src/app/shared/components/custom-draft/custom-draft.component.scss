@@ -1,0 +1,20 @@
+.draft {
+  position: relative;
+  width: 245px;
+}
+
+.wrapper-animation-play {
+  background-color: transparent;
+}
+
+.wrapper-animation {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.playerwrap:not(:first-child) {
+  display: none !important;
+}

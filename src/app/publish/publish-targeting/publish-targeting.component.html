@@ -1,0 +1,52 @@
+<form [formGroup]="formTargeting">
+    <div class="setup-box">
+        <p class="setup-box__title">Geo targeting</p>
+        <div class="setup-box__item">
+            <app-geo formControlName="targetingGeo"></app-geo>
+            <p-message *ngIf="isCheckValidation && formTargeting.get('targetingGeo').invalid"
+                       class="ui-fluid"
+                       severity="error"
+                       text="Please pick at least one country for your audience"></p-message>
+        </div>
+        <div class="setup-box__item">
+            <p class="setup-box__title">Detailed Targeting</p>
+            <app-detailed-targeting formControlName="targetingDetailed"></app-detailed-targeting>
+        </div>
+        <div class="setup-box__common-age-gender">
+            <div class="setup-box__item">
+                <span class="setup-box__title">Gender</span>
+                <div class="setup-box__item-inline gender">
+                    <div *ngFor="let gender of genderList">
+                        <p-radioButton name="genderGroup"
+                                       [value]="gender.value"
+                                       [label]="gender.name"
+                                       formControlName="selectedGender"></p-radioButton>
+                    </div>
+                </div>
+            </div>
+            <div class="setup-box__item">
+                <span class="setup-box__title">Age</span>
+                <div class="setup-box__item-inline" formGroupName="formAge">
+                    <span class="age-label">Min</span>
+                    <div>
+                        <p-dropdown [options]="ageList"
+                                    formControlName="selectedMinAge"
+                                    class="age-dropdown">
+                        </p-dropdown>
+                    </div>
+                    <span class="age-label max">Max</span>
+                    <div>
+                        <p-dropdown [options]="ageList"
+                                    formControlName="selectedMaxAge"
+                                    class="age-dropdown">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <p-message *ngIf="isCheckValidation && formTargeting.get('formAge').invalid"
+                           class="ui-fluid"
+                           severity="error"
+                           text="Max age should be more then min age"></p-message>
+            </div>
+        </div>
+    </div>
+</form>

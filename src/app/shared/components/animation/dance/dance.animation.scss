@@ -1,0 +1,43 @@
+.content__bottom_price {
+  transform: scale(1);
+}
+
+.price-position {
+  position: relative;
+  height: 66%;
+}
+
+.content__bottom_price {
+  position: absolute;
+  top: 0;
+  height: 65%;
+}
+
+@keyframes swipe5Move {
+  0% {
+    margin-top: 5%;
+  }
+  50% {
+    margin-top: -4%;;
+  }
+  100% {
+    margin-top: 5%;
+  }
+}
+
+@keyframes bottomPrice5Move {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+}
+
+.swipe-animation {
+  animation: swipe5Move 1s linear infinite;
+}
+
+.bottom-price-animation {
+  animation: bottomPrice5Move 1.5s linear infinite;
+}

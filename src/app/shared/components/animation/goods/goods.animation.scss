@@ -1,0 +1,219 @@
+.poster {
+  z-index: 33;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-not-move {
+  transform: translateY(0);
+}
+
+.product__img {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.last-slide-animation {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+}
+
+.square {
+  .product__info {
+    z-index: 3;
+  }
+
+  .product__img {
+    z-index: 2;
+  }
+}
+
+@keyframes prevSlideDMove {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes slideDMove {
+  0% {
+    transform: translateY(110%);
+  }
+  40% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes imgEvenHDMove {
+  0% {
+    transform: translateX(-110%) perspective(200px) rotateY(58deg);
+    opacity: 0.5;
+  }
+  10% {
+    transform: translateX(-40%) perspective(200px) rotateY(58deg);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translateX(0) perspective(0) rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes imgOddHDMove {
+  0% {
+    transform: translateX(110%) perspective(200px) rotateY(-58deg);
+    opacity: 0.5;
+  }
+  10% {
+    transform: translateX(40%) perspective(200px) rotateY(-58deg);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translateX(0) perspective(0) rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes imgBoxFirstDMove {
+  0% {
+    transform: translateY(200%) perspective(200px) rotateY(-58deg);
+    opacity: 0.3;
+  }
+  60% {
+    transform: translateY(0) perspective(200px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes imgPrevDMove {
+  0%, 100% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes titleDMove {
+  0%, 35% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+}
+
+@keyframes titleVDMove {
+  0%, 35% {
+    transform: translateY(90%);
+  }
+
+  60% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes priceDMove {
+  0%, 40% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes saleHeaderDMove {
+  0%, 30% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.5;
+  }
+  40%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes saleMessageDMove {
+  0%, 35% {
+    opacity: 0;
+  }
+  36% {
+    opacity: 0.5;
+  }
+  45% {
+    transform: translateY(35%);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.even-side .img-move-vertical,
+.even-side .img-move-horizontal {
+  animation: imgEvenHDMove 3s ease-out infinite;
+}
+
+.odd-side .img-move-vertical,
+.odd-side .img-move-horizontal {
+  animation: imgOddHDMove 3s ease-out infinite;
+}
+
+.even-side .img-box-move-square {
+  animation: imgEvenHDMove 3s ease-out infinite;
+}
+
+.odd-side .img-box-move-square {
+  animation: imgOddHDMove 3s ease-out infinite;
+}
+
+.horizontal .slide-move .product__title,
+.horizontal .title-move {
+  animation: titleDMove 3s ease-out infinite;
+}
+
+.vertical .slide-move .product__title,
+.vertical .title-move {
+  animation: titleVDMove 3s ease-out infinite;
+}
+
+.slide-move .product__price,
+.price-move {
+  animation: priceDMove 3s ease-out infinite;
+}
+
+.slide-move {
+  animation: slideDMove 3s ease-out infinite;
+}
+
+.prev-slide-move {
+  animation: prevSlideDMove 3s ease-out infinite;
+}
+
+.img-box-first-move-square {
+  animation: imgBoxFirstDMove 3s ease-out infinite;
+}
+
+.prev-slide-move .img-position-center,
+.prev-slide-move .product__info {
+  animation: imgPrevDMove 3s ease-out infinite;
+}
+
+.slide-move .last__sale-header {
+  animation: saleHeaderDMove 3s ease-out;
+}
+
+.slide-move .last__sale-message {
+  animation: saleMessageDMove 3s ease-out;
+}

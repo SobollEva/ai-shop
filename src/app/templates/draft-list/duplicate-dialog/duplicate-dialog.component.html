@@ -1,0 +1,11 @@
+<p class="dialog-message">
+  Enter duplicate draft title and press save
+</p>
+<input type="text" pInputText placeholder="Enter draft title" #draftTitleInput
+       [value]="draftTitle"
+       class="dialog-input">
+<div class="dialog-button">
+  <p-button label="Save"
+            (click)="onHide(draftTitleInput.value)" class="button_color_violet"></p-button>
+</div>
+

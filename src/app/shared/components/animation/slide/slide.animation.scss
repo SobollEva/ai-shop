@@ -1,0 +1,84 @@
+.content__title {
+  transform: translateX(0);
+}
+
+.content__img img {
+  transform: scale(1);
+}
+
+.content__price {
+  transform: translateX(0);
+}
+
+.content__bottom__swipe {
+  transform: scale(2.5, 1) translateY(0);
+}
+
+.content__discount {
+  transform: translateX(0);
+}
+
+@keyframes swipe1Move {
+  0% {
+    transform: scale(2.5, 1) translateY(0);
+  }
+  50% {
+    transform: scale(2.5, 1) translateY(24%);
+  }
+}
+
+@keyframes img1Move {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes title1Move {
+  0% {
+    transform: translateX(-125%);
+  }
+  15% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes price1Move {
+  0%, 14% {
+    transform: translateX(155%);
+  }
+  19% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes discount1Move {
+  0%, 18% {
+    transform: translateX(155%);
+  }
+  23% {
+    transform: translateX(0);
+  }
+}
+
+.swipe-move {
+  animation: swipe1Move 0.7s linear infinite;
+}
+
+.img-move {
+  animation: img1Move 3s ease-out infinite;
+}
+
+.price-move {
+  animation: price1Move 3s ease-out infinite;
+}
+
+.title-move {
+  animation: title1Move 3s ease-out infinite;
+}
+
+.discount-move {
+  animation: discount1Move 3s ease-out infinite;
+}

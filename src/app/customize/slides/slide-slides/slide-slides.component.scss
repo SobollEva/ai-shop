@@ -1,0 +1,96 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+.content__price,
+.content__price-input {
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
+}
+
+.content__title {
+  height: 15%;
+  width: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.content__title-input {
+  width: 100%;
+}
+
+.content__img {
+  height: 53%;
+  width: 100%;
+}
+
+.content__img img {
+  margin: auto 0;
+}
+
+.content__price-input {
+  font-size: 35px;
+  width: 62%;
+}
+
+.content__bottom__swipe {
+  display: inline-block;
+  transform: scale(2.5, 1);
+}
+
+.content__discount {
+  margin-bottom: 5%;
+}
+
+.content__discount-input {
+  font-size: 28px;
+  width: 100%;
+}
+
+.preview {
+  .content {
+    padding: 7px;
+  }
+
+  .content__price {
+    padding: 13px 0;
+  }
+  // TODO: вынести в общий файл стилей слайдов
+  .content__bottom__swipe {
+    font-size: 48px;
+  }
+}
+
+.sketch-box {
+  .content {
+    padding: 3px;
+  }
+
+  .content__title {
+    width: 95%;
+    margin-top: 2%;
+  }
+
+  .content__price {
+    font-size: 15px;
+    padding: 6px 0;
+  }
+
+  .content__bottom__swipe {
+    font-size: 22px;
+  }
+
+  .content__discount {
+    font-size: 13px;
+  }
+}

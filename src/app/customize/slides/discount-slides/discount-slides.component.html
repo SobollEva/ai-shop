@@ -1,0 +1,536 @@
+<div class="preview"
+     [style.width.px]="40*draftWidth"
+     [style.height.px]="40*draftHeight"
+     [ngClass]="currentFormat">
+  <div *ngIf="!isLastSlide"
+       class="content"
+       [ngStyle]="{'background-color': setupView.color_background | color}">
+    <div class="content__left" *ngIf="isLeftSide && currentFormat !== 'vertical'">
+      <div class="content__triangle"
+           [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+      <div class="content__trapezium"
+           [ngStyle]="{'background-color': setupView.color_end_background | color}">
+        <div class="trapezium__sale-header">
+            <textarea [value]="setupView.sale_header"
+                      [ngStyle]="{'color': setupView.color_sale_header | color}"
+                      (input)="setupView.sale_header = $event.target.value"
+                      [appFontColor]="'color_sale_header'"
+                      (currentElement)="customizeService.propertyTextColor = $event"
+                      maxlength="8"
+                      pTooltip="Maximum 8 symbols" tooltipPosition="top"
+                      tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                      rows="2"
+                      class="trapezium__sale-header-input edit-overlay"></textarea>
+        </div>
+      </div>
+      <div class="content__ribbon">
+        <div class="title-ribbon">
+          <div class="tragon1"
+               [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+          <div class="tragon2"
+               [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+          <div class="title-ribbon-out"
+               [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+          </div>
+          <div class="title-ribbon-in">
+            <input [value]="customizeService.previewSlide?.price"
+                   [ngStyle]="{'color': setupView.color_price | color}"
+                   (input)="customizeService.previewSlide.price = $event.target.value"
+                   [appFontColor]="'color_price'" (currentElement)="customizeService.propertyTextColor = $event"
+                   maxlength="11"
+                   pTooltip="Maximum 11 symbols" tooltipPosition="top"
+                   tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                   class="title-ribbon-in-input edit-overlay">
+          </div>
+          <div class="tragon3"
+               [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+        </div>
+      </div>
+      <div class="content__product-info">
+        <div class="content__img img-position-center"
+             [ngStyle]="{'background-image': 'url('+customizeService.previewSlide?.image+')'}">
+        </div>
+        <div class="content__title">
+          <textarea [value]="customizeService.previewSlide?.title"
+                    [ngStyle]="{'color': setupView.color_title | color}"
+                    (input)="customizeService.previewSlide.title = $event.target.value"
+                    [appFontSize]="customizeService.previewSlide?.title" [limitSizeList]="[100,75]"
+                    [fontSizeList]="[11.5,15]"
+                    [appFontColor]="'color_title'" (currentElement)="customizeService.propertyTextColor = $event"
+                    maxlength="100"
+                    pTooltip="Maximum 100 symbols" tooltipPosition="top"
+                    tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                    class="content__title-input edit-overlay"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="content__right" *ngIf="!isLeftSide && currentFormat !== 'vertical'">
+      <div class="content__product-info">
+        <div class="content__img img-position-center"
+             [ngStyle]="{'background-image': 'url('+customizeService.previewSlide?.image+')'}">
+        </div>
+        <div class="content__title">
+          <textarea [value]="customizeService.previewSlide?.title"
+                    [ngStyle]="{'color': setupView.color_title | color}"
+                    (input)="customizeService.previewSlide.title = $event.target.value"
+                    [appFontSize]="customizeService.previewSlide.title" [limitSizeList]="[100,75]"
+                    [fontSizeList]="[11.5,15]"
+                    [appFontColor]="'color_title'" (currentElement)="customizeService.propertyTextColor = $event"
+                    maxlength="100"
+                    pTooltip="Maximum 100 symbols" tooltipPosition="top"
+                    tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                    class="content__title-input edit-overlay"></textarea>
+        </div>
+      </div>
+      <div class="content__triangle"
+           [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+      <div class="content__trapezium"
+           [ngStyle]="{'background-color': setupView.color_end_background | color}">
+        <div class="trapezium__sale-header">
+                <textarea [value]="setupView.sale_header"
+                          [ngStyle]="{'color': setupView.color_sale_header | color}"
+                          (input)="setupView.sale_header = $event.target.value"
+                          [appFontColor]="'color_sale_header'"
+                          (currentElement)="customizeService.propertyTextColor = $event"
+                          maxlength="8"
+                          pTooltip="Maximum 8 symbols" tooltipPosition="top"
+                          tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                          rows="2"
+                          class="trapezium__sale-header-input edit-overlay"></textarea>
+        </div>
+      </div>
+      <div class="content__ribbon">
+        <div class="title-ribbon">
+          <div class="tragon1"
+               [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+          <div class="tragon2"
+               [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+          <div class="title-ribbon-out"
+               [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+          </div>
+          <div class="title-ribbon-in">
+            <input [value]="customizeService.previewSlide?.price"
+                   [ngStyle]="{'color': setupView.color_price | color}"
+                   (input)="customizeService.previewSlide.price = $event.target.value"
+                   [appFontColor]="'color_price'" (currentElement)="customizeService.propertyTextColor = $event"
+                   maxlength="11"
+                   pTooltip="Maximum 11 symbols" tooltipPosition="top"
+                   tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                   class="title-ribbon-in-input edit-overlay">
+          </div>
+          <div class="tragon3"
+               [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentFormat === 'vertical'"
+         style="height: 100%">
+      <div class="content__product-info">
+        <div class="content__img img-position-center"
+             [ngStyle]="{'background-image': 'url('+customizeService.previewSlide?.image+')'}">
+        </div>
+        <div class="content__title">
+          <textarea [value]="customizeService.previewSlide?.title"
+                    [ngStyle]="{'color': setupView.color_title | color}"
+                    (input)="customizeService.previewSlide.title = $event.target.value"
+                    [appFontSize]="customizeService.previewSlide.title" [limitSizeList]="[100,75]"
+                    [fontSizeList]="[11.5,15]"
+                    [appFontColor]="'color_title'" (currentElement)="customizeService.propertyTextColor = $event"
+                    maxlength="100"
+                    pTooltip="Maximum 100 symbols" tooltipPosition="top"
+                    tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                    class="content__title-input edit-overlay"></textarea>
+        </div>
+      </div>
+      <div class="content__left" *ngIf="isLeftSide">
+        <div class="content__triangle"
+             [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+        <div class="content__trapezium"
+             [ngStyle]="{'background-color': setupView.color_end_background | color}">
+          <div class="trapezium__sale-header">
+                          <textarea [value]="setupView.sale_header"
+                                    [ngStyle]="{'color': setupView.color_sale_header | color}"
+                                    (input)="setupView.sale_header = $event.target.value"
+                                    [appFontColor]="'color_sale_header'"
+                                    (currentElement)="customizeService.propertyTextColor = $event"
+                                    maxlength="8"
+                                    pTooltip="Maximum 8 symbols" tooltipPosition="top"
+                                    tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                                    rows="2"
+                                    class="trapezium__sale-header-input edit-overlay"></textarea>
+          </div>
+        </div>
+        <div class="content__ribbon">
+          <div class="title-ribbon">
+            <div class="tragon1"
+                 [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+            <div class="tragon2"
+                 [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+            <div class="title-ribbon-out"
+                 [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+            </div>
+            <div class="title-ribbon-in">
+              <input [value]="customizeService.previewSlide?.price"
+                     [ngStyle]="{'color': setupView.color_price | color}"
+                     (input)="customizeService.previewSlide.price = $event.target.value"
+                     [appFontColor]="'color_price'" (currentElement)="customizeService.propertyTextColor = $event"
+                     maxlength="11"
+                     pTooltip="Maximum 11 symbols" tooltipPosition="top"
+                     tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                     class="title-ribbon-in-input edit-overlay">
+            </div>
+            <div class="tragon3"
+                 [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+          </div>
+        </div>
+      </div>
+      <div class="content__right" *ngIf="!isLeftSide">
+        <div class="content__triangle"
+             [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+        <div class="content__trapezium"
+             [ngStyle]="{'background-color': setupView.color_end_background | color}">
+          <div class="trapezium__sale-header">
+                    <textarea [value]="setupView.sale_header"
+                              [ngStyle]="{'color': setupView.color_sale_header | color}"
+                              (input)="setupView.sale_header = $event.target.value"
+                              [appFontColor]="'color_sale_header'"
+                              (currentElement)="customizeService.propertyTextColor = $event"
+                              maxlength="8"
+                              pTooltip="Maximum 8 symbols" tooltipPosition="top"
+                              tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                              rows="2"
+                              class="trapezium__sale-header-input edit-overlay"></textarea>
+          </div>
+        </div>
+        <div class="content__ribbon">
+          <div class="title-ribbon">
+            <div class="tragon1"
+                 [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+            <div class="tragon2"
+                 [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+            <div class="title-ribbon-out"
+                 [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+            </div>
+            <div class="title-ribbon-in">
+              <input [value]="customizeService.previewSlide?.price"
+                     [ngStyle]="{'color': setupView.color_price | color}"
+                     (input)="customizeService.previewSlide.price = $event.target.value"
+                     [appFontColor]="'color_price'" (currentElement)="customizeService.propertyTextColor = $event"
+                     maxlength="11"
+                     pTooltip="Maximum 11 symbols" tooltipPosition="top"
+                     tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                     class="title-ribbon-in-input edit-overlay">
+            </div>
+            <div class="tragon3"
+                 [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLastSlide" class="content">
+    <div class="content__last"
+         [ngStyle]="{'background-color': setupView.color_end_background | color}">
+      <div class="content__last__info">
+        <div class="content__last__info_shop-title"
+             [ngStyle]="{'background-color': setupView.color_bottom_plane | color}">
+                      <textarea [value]="setupView.shop_title"
+                                [ngStyle]="{'color': setupView.color_shop_title | color}"
+                                (input)="setupView.shop_title = $event.target.value"
+                                [appFontSize]="setupView.shop_title" [limitSizeList]="[100,40]" [fontSizeList]="[25,35]"
+                                [appFontColor]="'color_shop_title'"
+                                (currentElement)="customizeService.propertyTextColor = $event"
+                                maxlength="100"
+                                pTooltip="Maximum 100 symbols" tooltipPosition="top"
+                                tooltipEvent="focus" tooltipStyleClass="tooltip-slide"
+                                class="content__last__info_shop-title-input edit-overlay"></textarea>
+        </div>
+        <div class="content__last__info_sale-message">
+          <input [value]="setupView.sale_message"
+                 [ngStyle]="{'color': setupView.color_sale_message | color}"
+                 (input)="setupView.sale_message = $event.target.value"
+                 [appFontColor]="'color_sale_message'" (currentElement)="customizeService.propertyTextColor = $event"
+                 maxlength="17"
+                 pTooltip="Maximum 17 symbols"
+                 tooltipPosition="top"
+                 tooltipEvent="focus"
+                 tooltipStyleClass="tooltip-slide"
+                 class="content__last_sale-message-input edit-overlay">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sketch-box" [ngClass]="currentFormat">
+  <!--SLIDES LIST-->
+  <div class="sketch-box__border-bottom"
+       *ngFor="let product of customizeService.productList; index as i; even as even"
+       [ngClass]="{'sketch-box__item-active': i === customizeService.activeSlide}">
+    <div class="sketch-box__item"
+         (click)="isLeftSide = even; addSlideToPreview(i, false)"
+         [style.width.px]="16*draftWidth"
+         [style.height.px]="16*draftHeight">
+      <div class="content"
+           [ngStyle]="{'background-color': setupView.color_background | color}"
+           *ngIf="even && currentFormat !== 'vertical'">
+        <div class="content__left">
+          <div class="content__triangle"
+               [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+          <div class="content__trapezium"
+               [ngStyle]="{'background-color': setupView.color_end_background | color}">
+            <div class="trapezium__sale-header"
+                 [ngStyle]="{'color': setupView.color_sale_header | color}">
+              {{setupView.sale_header}}
+            </div>
+          </div>
+          <div class="content__ribbon">
+            <div class="title-ribbon">
+              <div class="tragon1"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+              <div class="tragon2"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+              <div class="title-ribbon-out"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+              </div>
+              <div class="title-ribbon-in"
+                   [ngStyle]="{'color': setupView.color_price | color}">
+                {{product?.price}}
+              </div>
+              <div class="tragon3"
+                   [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+            </div>
+          </div>
+          <div class="content__product-info">
+            <div class="content__img img-position-center"
+                 [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+            </div>
+            <div class="content__title"
+                 [ngStyle]="{'color': setupView.color_title | color}"
+                 [appFontSize]="product?.title" [limitSizeList]="[100,75]" [fontSizeList]="[4.3,5.5]">
+              {{product?.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content"
+           [ngStyle]="{'background-color': setupView.color_background | color}"
+           *ngIf="!even && currentFormat !== 'vertical'">
+        <div class="content__right">
+          <div class="content__product-info">
+            <div class="content__img img-position-center"
+                 [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+            </div>
+            <div class="content__title"
+                 [ngStyle]="{'color': setupView.color_title | color}"
+                 [appFontSize]="product?.title" [limitSizeList]="[100,75]" [fontSizeList]="[4.3,5.5]">
+              {{product?.title}}
+            </div>
+          </div>
+          <div class="content__ribbon">
+            <div class="title-ribbon">
+              <div class="tragon1"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+              <div class="tragon2"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+              <div class="title-ribbon-out"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+              </div>
+              <div class="title-ribbon-in"
+                   [ngStyle]="{'color': setupView.color_price | color}">
+                {{product?.price}}
+              </div>
+              <div class="tragon3"
+                   [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+            </div>
+          </div>
+          <div class="content__triangle"
+               [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+          <div class="content__trapezium"
+               [ngStyle]="{'background-color': setupView.color_end_background | color}">
+            <div class="trapezium__sale-header"
+                 [ngStyle]="{'color': setupView.color_sale_header | color}">
+              {{setupView.sale_header}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content"
+           [ngStyle]="{'background-color': setupView.color_background | color}"
+           *ngIf="currentFormat === 'vertical'">
+        <div class="content__product-info">
+          <div class="content__img img-position-center"
+               [ngStyle]="{'background-image': 'url('+product?.image+')'}">
+          </div>
+          <div class="content__title"
+               [ngStyle]="{'color': setupView.color_title | color}"
+               [appFontSize]="product?.title" [limitSizeList]="[100,75]" [fontSizeList]="[4.3,5.5]">
+            {{product?.title}}
+          </div>
+        </div>
+
+        <div [ngClass]="{'content__left': even, 'content__right': !even}">
+          <div class="content__triangle"
+               [ngStyle]="{'background-color': setupView.color_bottom_plane | color}">
+          </div>
+          <div class="content__trapezium"
+               [ngStyle]="{'background-color': setupView.color_end_background | color}">
+            <div class="trapezium__sale-header"
+                 [ngStyle]="{'color': setupView.color_sale_header | color}">
+              {{setupView.sale_header}}
+            </div>
+          </div>
+          <div class="content__ribbon">
+            <div class="title-ribbon">
+              <div class="tragon1"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+              <div class="tragon2"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+              <div class="title-ribbon-out"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+              </div>
+              <div class="title-ribbon-in"
+                   [ngStyle]="{'color': setupView.color_price | color}">
+                {{product?.price}}
+              </div>
+              <div class="tragon3"
+                   [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sketch-box__item_number">{{i+1}}</p>
+    </div>
+  </div>
+  <!--LAST SlideParams-->
+  <div class="sketch-box__border-bottom"
+       [ngClass]="{'sketch-box__item-active': customizeService.productList.length === customizeService.activeSlide}">
+    <div class="sketch-box__item sketch-box__item_last"
+         (click)="addSlideToPreview(customizeService.productList.length, true)"
+         [style.width.px]="16*draftWidth"
+         [style.height.px]="16*draftHeight">
+      <div class="content"
+           [ngClass]="currentFormat">
+        <div class="content__last"
+             [ngStyle]="{'background-color': setupView.color_end_background | color}">
+          <div class="content__last__info">
+            <div class="content__last__info_shop-title"
+                 [ngStyle]="{'background-color': setupView.color_bottom_plane | color, 'color': setupView.color_shop_title | color}"
+                 [appFontSize]="setupView.shop_title" [limitSizeList]="[100,40]" [fontSizeList]="[11.5,15]">
+              {{setupView.shop_title}}
+            </div>
+            <div class="content__last__info_sale-message"
+                 [ngStyle]="{'color': setupView.color_sale_message | color}">
+              {{setupView.sale_message}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sketch-box__item_number">{{customizeService.productList.length+1}}</p>
+    </div>
+  </div>
+  <!--PREVIEW SLIDE-->
+  <div class="sketch-box__border-bottom draft-preview">
+    <div class="sketch-box__item"
+         [style.width.px]="16*draftWidth"
+         [style.height.px]="16*draftHeight">
+      <div class="wrapper-animation-play">
+        <div class="play-animation"
+             (click)="showPreviewDraft()">
+          <span>&#9658;</span>
+        </div>
+      </div>
+      <div class="content"
+           [ngStyle]="{'background-color': setupView.color_background | color}"
+           *ngIf="currentFormat !== 'vertical'">
+        <div class="content__left">
+          <div class="content__triangle"
+               [ngStyle]="{'background-color': setupView.color_bottom_plane | color}"></div>
+          <div class="content__trapezium"
+               [ngStyle]="{'background-color': setupView.color_end_background | color}">
+            <div class="trapezium__sale-header"
+                 [ngStyle]="{'color': setupView.color_sale_header | color}">
+              {{setupView.sale_header}}
+            </div>
+          </div>
+          <div class="content__ribbon">
+            <div class="title-ribbon">
+              <div class="tragon1"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+              <div class="tragon2"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+              <div class="title-ribbon-out"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+              </div>
+              <div class="title-ribbon-in"
+                   [ngStyle]="{'color': setupView.color_price | color}">
+                {{customizeService.productList[0]?.price}}
+              </div>
+              <div class="tragon3"
+                   [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+            </div>
+          </div>
+          <div class="content__product-info">
+            <div class="content__img img-position-center"
+                 [ngStyle]="{'background-image': 'url('+customizeService.productList[0]?.image+')'}">
+            </div>
+            <div class="content__title"
+                 [ngStyle]="{'color': setupView.color_title | color}"
+                 [appFontSize]="customizeService.productList[0]?.title"
+                 [limitSizeList]="[100,75]" [fontSizeList]="[4.3,5.5]">
+              {{customizeService.productList[0]?.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content"
+           [ngStyle]="{'background-color': setupView.color_background | color}"
+           *ngIf="currentFormat === 'vertical'">
+        <div class="content__product-info">
+          <div class="content__img img-position-center"
+               [ngStyle]="{'background-image': 'url('+customizeService.productList[0]?.image+')'}">
+          </div>
+          <div class="content__title"
+               [ngStyle]="{'color': setupView.color_title | color}"
+               [appFontSize]="customizeService.productList[0]?.title"
+               [limitSizeList]="[100,75]" [fontSizeList]="[4.3,5.5]">
+            {{customizeService.productList[0]?.title}}
+          </div>
+        </div>
+        <div class="content__left">
+          <div class="content__triangle"
+               [ngStyle]="{'background-color': setupView.color_bottom_plane | color}">
+          </div>
+          <div class="content__trapezium"
+               [ngStyle]="{'background-color': setupView.color_end_background | color}">
+            <div class="trapezium__sale-header"
+                 [ngStyle]="{'color': setupView.color_sale_header | color}">
+              {{setupView.sale_header}}
+            </div>
+          </div>
+          <div class="content__ribbon">
+            <div class="title-ribbon">
+              <div class="tragon1"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color,'border-left-color': setupView.color_flag_l | color}"></div>
+              <div class="tragon2"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_d | color,'border-right-color': setupView.color_flag_d | color}"></div>
+              <div class="title-ribbon-out"
+                   [ngStyle]="{'border-top-color': setupView.color_flag_l | color}">
+              </div>
+              <div class="title-ribbon-in"
+                   [ngStyle]="{'color': setupView.color_price | color}">
+                {{customizeService.productList[0]?.price}}
+              </div>
+              <div class="tragon3"
+                   [ngStyle]="{'border-bottom-color': setupView.color_flag_d | color,'border-left-color': setupView.color_flag_d | color}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sketch-box__item_number">preview</p>
+    </div>
+  </div>
+</div>
